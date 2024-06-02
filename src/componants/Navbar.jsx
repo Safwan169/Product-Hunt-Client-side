@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { IoPersonCircleOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
+import Contex from './Authentication/Contex';
 
 const Navbar = () => {
     const [yes, setYes] = useState(false)
+    const [yes2, setYes2] = useState(false)
+    const { user } = Contex()
     const all = <>
 
         <li><Link to={'/'}>Home</Link></li>
@@ -41,22 +44,31 @@ const Navbar = () => {
 
                 </div>
                 {/* when user not log in  */}
-                <div className="navbar-end">
+                {user ? <div className="navbar-end">
+                    <button onClick={() => setYes2(!yes2)}> <img src={user.photoURL} alt="" /> </button>
+                </div> : <div className="navbar-end">
                     <button onClick={() => setYes(!yes)}><IoPersonCircleOutline size={40} /> </button>
-                </div>
+                </div>}
 
-                            
+
 
             </div>
             {/* when user not log in  */}
             <div className=' px-5 shadow-2xl absolute right-0 '>
-                        {
-                            yes && <div className='flex-col flex gap-3  font-bold'>
-                              <Link className='hover:underline hover:text-purple-500' to={'/login'}>Log In</Link>
-                              <Link className='hover:underline hover:text-purple-500' to={'/register'}>Register</Link>
-                            </div>
-                        }
+                {
+                    yes && <div className='flex-col flex gap-3  font-bold'>
+                        <Link className='hover:underline hover:text-purple-500' to={'/login'}>Log In</Link>
+                        <Link className='hover:underline hover:text-purple-500' to={'/register'}>Register</Link>
                     </div>
+                }
+                {
+                    yes2 && <div className='flex-col flex gap-3  font-bold'>
+                        <p className='text-xl font-bold'>{user.displayName}</p>
+                        <Link className='hover:underline hover:text-purple-500' to={'/dashboard'}>Dashboard</Link>
+                        <Link >Log Out</Link>
+                    </div>
+                }
+            </div>
 
 
         </div>

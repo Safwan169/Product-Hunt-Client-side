@@ -1,8 +1,8 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
 import React, {  createContext, useEffect, useState } from 'react';
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from './firebase/firebase.config';
 import axios from 'axios';
+import { auth } from '../../../firebase.config';
 export const myContext = createContext(null)
 
 

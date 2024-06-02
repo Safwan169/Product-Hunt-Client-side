@@ -12,6 +12,7 @@ import Products from "./componants/Products";
 import Login from "./Login";
 import Register from "./componants/Register";
 import Dashboard from "./componants/Dashboard";
+import Authentication from "./componants/Authentication/Authentication";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
       {
         path:'/login',
       
-        element:<Home></Home>
+        element:<Login></Login>
       },
  
       {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <Authentication>
     <RouterProvider router={router} />
+
+    </Authentication>
+
   </React.StrictMode>
 );
