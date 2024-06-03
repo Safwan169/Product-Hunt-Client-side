@@ -2,8 +2,26 @@ import React, { useState } from 'react';
 import { IoPersonCircleOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import Contex from './Authentication/Contex';
+import { auth } from '../../firebase.config';
+import Swal from 'sweetalert2';
+import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
+    const handleLogout = () => {
+        signOut(auth)
+            .then(() => {
+                Swal.fire({
+                    title: "Good job!",
+                    text: "You have successfully Sign Out",
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                setYes(false)
+
+                setYes2(!yes2)
+            })
+    }
     const [yes, setYes] = useState(false)
     const [yes2, setYes2] = useState(false)
     const { user } = Contex()
@@ -45,7 +63,7 @@ const Navbar = () => {
                 </div>
                 {/* when user not log in  */}
                 {user ? <div className="navbar-end">
-                    <button onClick={() => setYes2(!yes2)}> <img src={user.photoURL} alt="" /> </button>
+                    <button onClick={() => setYes2(!yes2)}> <img className='rounded-3xl w-[50px]' src={user.photoURL} alt="" /> </button>
                 </div> : <div className="navbar-end">
                     <button onClick={() => setYes(!yes)}><IoPersonCircleOutline size={40} /> </button>
                 </div>}
@@ -54,18 +72,25 @@ const Navbar = () => {
 
             </div>
             {/* when user not log in  */}
-            <div className=' px-5 shadow-2xl absolute right-0 '>
+            <div className=' px-5 shadow-2xl absolute rounded-2xl  right-0 '>
+                <>
+                    {
+                        user ? '' : <span>
+                            {
+                                yes ? <div className='flex-col flex gap-3 p-5 rounded-2xl border border-gray-300 font-bold'>
+                                    <Link className='hover:underline hover:text-purple-500' to={'/login'}>Log In</Link>
+                                    <Link className='hover:underline hover:text-purple-500' to={'/register'}>Register</Link>
+                                </div> : ''
+                            }
+                        </span>
+
+                    }
+                </>
                 {
-                    yes && <div className='flex-col flex gap-3  font-bold'>
-                        <Link className='hover:underline hover:text-purple-500' to={'/login'}>Log In</Link>
-                        <Link className='hover:underline hover:text-purple-500' to={'/register'}>Register</Link>
-                    </div>
-                }
-                {
-                    yes2 && <div className='flex-col flex gap-3  font-bold'>
-                        <p className='text-xl font-bold'>{user.displayName}</p>
+                    yes2 && <div className='flex-col flex p-5 rounded-2xl border border-gray-300 gap-3  font-bold'>
+                        <p className='text-xs font-black'>{user.displayName}</p>
                         <Link className='hover:underline hover:text-purple-500' to={'/dashboard'}>Dashboard</Link>
-                        <Link >Log Out</Link>
+                        <Link onClick={handleLogout} className='btn w-[100px] bg-red-400  text-white font-bold rounded-2xl' >Sign Out</Link>
                     </div>
                 }
             </div>
