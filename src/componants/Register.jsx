@@ -4,9 +4,41 @@ import { IoEyeOff, IoKey } from 'react-icons/io5';
 import { MdOutlineEmail } from 'react-icons/md';
 import Authtitle from './Authtitle';
 import Withsocial from './Withsocial';
+import Contex from './Authentication/Contex';
+import { updateProfile } from 'firebase/auth';
+import { auth } from '../../firebase.config';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    const navigate= useNavigate()
+    const {createUser,setDep,dep}=Contex()
     const [eye, setEye] = useState(false)
+    const handleSubmit=e=>{
+        e.preventDefault()
+        const name=e.target.name.value
+        const email=e.target.email.value
+        const password=e.target.password.value
+        const photoURL=e.target.photoURL.value
+    //    console.log(name,email,password,photoURL)
+        createUser(email,password)
+        .then(()=>{
+            updateProfile(auth.currentUser,{
+                displayName: `${name}`, photoURL: `${photoURL}`
+            })
+            .then(()=>{
+                Swal.fire({
+                    title: "Good job!",
+                    text: "You have successfully Registered",
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 2000    });
+                    setDep(!dep)
+                    navigate('/')
+            })
+        })
+    }
+
     return (
         <>
             <Authtitle name={'Register'} text={'Already Have an account? '} go={'Sign In'} where={'/login'}></Authtitle>
@@ -15,7 +47,7 @@ const Register = () => {
 
 
                 <div className='lg:w-1/2 md:w-1/2  '>
-                    <form class="max-w-md mx-auto">
+                    <form onSubmit={handleSubmit} class="max-w-md mx-auto">
                         {/* name */}
                         <div class="relative z-0 w-full mb-5 group">
                             <input type="text" name="name" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
@@ -24,12 +56,12 @@ const Register = () => {
 
                         {/* email */}
                         <div class="relative z-0 w-full mb-5 group">
-                            <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                            <input type="email" name="email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                             <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 flex items-center gap-2"><MdOutlineEmail size={15} /> Email address</label>
                         </div>
                         {/* password */}
                         <div class="relative z-0 w-full mb-5 group">
-                            <input type={eye ? 'text' : 'password'} name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                            <input type={eye ? 'text' : 'password'} name="password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                             <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 flex gap-2 items-center"><IoKey size={15} /> Password</label>
                             <p onClick={() => setEye(!eye)} className='absolute right-0 bottom-3'>{eye ? <IoEyeOff /> : <FaEye />}</p>
                         </div>
