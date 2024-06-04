@@ -5,7 +5,10 @@ import { Outlet } from 'react-router-dom';
 const Dashboard = () => {
     return (
         <div>
-            <Drawar></Drawar>
+            <div>
+            <Drawar ></Drawar>
+
+            </div>
             <Outlet></Outlet>
         </div>
     );

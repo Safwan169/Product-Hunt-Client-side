@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Drawar = () => {
     return (
       
-        <div className="drawer ml-4  mt-4">
+        <div className="drawer ml-4 block z-20 mt-4">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
                 {/* Page content here */}
@@ -21,7 +21,7 @@ const Drawar = () => {
 
                        <div className="divider"></div>
 
-                     <Link to={'dashboard'}><a>My Profile</a></Link>
+                     <Link to={'/dashboard'}><a>My Profile</a></Link>
                      <Link to={'addproducts'} ><a>Add Products</a></Link>
                      <Link to={'myproducts'}><a>My Products</a></Link>
 
