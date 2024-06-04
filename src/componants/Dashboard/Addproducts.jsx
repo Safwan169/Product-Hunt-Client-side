@@ -12,11 +12,11 @@ const Addproducts = () => {
 
   const { user } = Contex()
   console.log(user.displayName)
-  // const {displayName,email,photoURL}=user
+  const {displayName,email,photoURL}=user
   // const { ownerName, ownerImage, ownerEmail } = useContext(ProductOwnerContext);
 
   const [productName, setProductName] = useState("");
-  const [productImage, setProductImage] = useState(null);
+  const [productImage, setProductImage] = useState('');
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState([]);
   const [externalLinks, setExternalLinks] = useState("");
@@ -38,10 +38,13 @@ const Addproducts = () => {
       description,
       tags,
       externalLinks,
-      // displayName,
-      // photoURL,
-      // email,
+      displayName,
+      photoURL,
+      email,
     });
+
+      
+
   };
   return (
     // <div>
@@ -78,11 +81,11 @@ const Addproducts = () => {
 
 
     <>
-    <div>
-      <p className='text-center font-bold text-2xl underline '>Add Product Page 
-</p>
+      <div>
+        <p className='text-center font-bold text-2xl underline '>Add Product Page
+        </p>
 
-    </div>
+      </div>
       <div className="max-w-lg mx-auto p-4">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -101,7 +104,7 @@ const Addproducts = () => {
             <input
               type="url"
               required
-              onChange={(e) => setProductImage(e.target.files[0])}
+              onChange={(e) => setProductImage(e.target.value)}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
@@ -146,7 +149,7 @@ const Addproducts = () => {
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
-          {/* 
+          
         <div className="mt-4">
           <label className="block text-sm font-medium text-gray-700">Product Owner Info</label>
           <div className="mt-1">
@@ -158,7 +161,7 @@ const Addproducts = () => {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
 
           <div>
             <button

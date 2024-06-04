@@ -25,7 +25,7 @@ const Myproducts = () => {
                             <td>Cy Ganderton</td>
                             <td>Quality Control Specialist</td>
                             <td>Littel, Schaden and Vandervort</td>
-                            <td className='   ' ><span className='btn text-green-400'><TiEdit size={25} /></span></td>
+                            <td className=' ' ><span className='btn text-green-400'><TiEdit size={25} /></span></td>
                             <td className=' '><span className='btn text-red-500'> <MdDelete size={25}/></span></td>
                          
                           
