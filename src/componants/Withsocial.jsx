@@ -10,57 +10,67 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const auth=getAuth()
-// const navigate = useNavigate();
+const auth = getAuth()
 
 
-const Withsocial = ({text}) => {
+const Withsocial = ({ text }) => {
+
+    const navigate = useNavigate();
+
 
 
     // google
-    const handleGoogle=()=>{
-const provider = new GoogleAuthProvider();
+    const handleGoogle = () => {
+        const provider = new GoogleAuthProvider();
 
-        signInWithPopup(auth,provider)
-        .then(()=>{
-            // navigate('/')
-            Swal.fire({
-                title: "Good job!",
-                text: "You have successfully Sign In",
-                icon: "success",
-                showConfirmButton: false,
-                timer: 2000    });
-        })
-          
-        
+        signInWithPopup(auth, provider)
+            .then(() => {
+
+                Swal.fire({
+                    title: "Good job!",
+                    text: "You have successfully Sign In",
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                navigate("/")
+
+            })
+
 
     }
-    const handleGitHub=()=>{
-const provider2 = new GithubAuthProvider();
+    const handleGitHub = () => {
+        const provider2 = new GithubAuthProvider();
 
-        signInWithPopup(auth,provider2)
-        .then(()=>{
-            // navigate('/')
-
-            // console.log(result)
-        })
-        .catch(error=>{
-            console.log(error)
-        })
+        signInWithPopup(auth, provider2)
+            .then(() => {
+                Swal.fire({
+                    title: "Good job!",
+                    text: "You have successfully Sign In",
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                navigate("/")
+                // console.log(result)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
 
     // git hub
-  
+
     return (
         <div className='max-w-md mx-auto'>
             <p className=' text-xl my-5'>{text}</p>
             <div className='flex gap-10'>
-                <button  onClick={handleGoogle} className='border font-bold bg-gray-300 px-4 rounded-xl btn '><FcGoogle /> Google</button>
+                <button onClick={handleGoogle} className='border font-bold bg-gray-300 px-4 rounded-xl btn '><FcGoogle /> Google</button>
                 <button onClick={handleGitHub} className='border font-bold  bg-gray-300 px-4 rounded-xl btn '><FaGithub /> GitHub</button>
             </div>
 
-            
+
         </div>
     );
 };

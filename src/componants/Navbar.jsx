@@ -77,7 +77,7 @@ const Navbar = () => {
                     {
                         user ? '' : <span>
                             {
-                                yes ? <div className='flex-col flex gap-3 p-5 rounded-2xl border border-gray-300 font-bold'>
+                                yes ? <div className='flex-col flex gap-3 p-5 rounded-2xl border  border-gray-300 font-bold'>
                                     <Link className='hover:underline hover:text-purple-500' to={'/login'}>Log In</Link>
                                     <Link className='hover:underline hover:text-purple-500' to={'/register'}>Register</Link>
                                 </div> : ''
@@ -87,7 +87,7 @@ const Navbar = () => {
                     }
                 </>
                 {
-                    yes2 && <div className='flex-col flex p-5 rounded-2xl border border-gray-300 gap-3  font-bold'>
+                    yes2 && <div className='flex-col flex p-5 rounded-2xl   bg-slate-200 border border-gray-300 gap-3  font-bold'>
                         <p className='text-xs font-black'>{user.displayName}</p>
                         <Link className='hover:underline hover:text-purple-500' to={'/dashboard'}>Dashboard</Link>
                         <Link onClick={handleLogout} className='btn w-[100px] bg-red-400  text-white font-bold rounded-2xl' >Sign Out</Link>

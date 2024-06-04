@@ -76,8 +76,8 @@ const Register = () => {
 
                         </div>
                     </form>
-                    <div className="divider mt-5 font-bold"></div>
-                    <Withsocial text={'Register with Social Media'}></Withsocial>
+                    {/* <div className="divider mt-5 font-bold"></div>
+                    <Withsocial text={'Register with Social Media'}></Withsocial> */}
 
                 </div>
 

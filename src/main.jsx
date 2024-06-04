@@ -11,8 +11,12 @@ import Home from "./componants/Home";
 import Products from "./componants/Products";
 import Login from "./Login";
 import Register from "./componants/Register";
-import Dashboard from "./componants/Dashboard";
 import Authentication from "./componants/Authentication/Authentication";
+import Myprofile from "./componants/Dashboard/Myprofile";
+import Myproducts from "./componants/Dashboard/Myproducts";
+import Addproducts from "./componants/Dashboard/Addproducts";
+import Dashboard from "./componants/Dashboard/Dashboard";
+import PrivateRoute from "./componants/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -41,13 +45,35 @@ const router = createBrowserRouter([
       
         element:<Register></Register>
       },
-      {
-        path:'/dashboard',
+      // {
+      //   path:'/dashboard',
       
-        element:<Dashboard></Dashboard>
-      },
+      //   element:<Dashboard></Dashboard>
+      // },
     ]
+   
   },
+  {
+    path:"/dashboard",
+    element:<Dashboard></Dashboard>,
+    children:[
+      {
+        path:"/dashboard",
+        element:<Myprofile></Myprofile>
+      },
+      
+      {
+        path:"myproducts",
+        element:<Myproducts></Myproducts>
+      },
+      
+      {
+        path:"addproducts",
+        element:<PrivateRoute><Addproducts></Addproducts></PrivateRoute>
+      },
+      
+    ]
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
