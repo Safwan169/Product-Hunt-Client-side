@@ -23,7 +23,7 @@ const Drawar = () => {
 
                      <Link to={'/dashboard'}><a>My Profile</a></Link>
                      <Link to={'addproducts'} ><a>Add Products</a></Link>
-                     <Link to={'myproducts'}><a>My Products</a></Link>
+                     <Link to={'/dashboard/myproducts'}><a>My Products</a></Link>
 
                 </ul>
             </div>

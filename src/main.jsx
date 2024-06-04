@@ -17,71 +17,83 @@ import Myproducts from "./componants/Dashboard/Myproducts";
 import Addproducts from "./componants/Dashboard/Addproducts";
 import Dashboard from "./componants/Dashboard/Dashboard";
 import PrivateRoute from "./componants/PrivateRoute";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Update from "./Update";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<Route></Route>,
-    errorElement:<Error></Error>,
-    children:[
+    element: <Route></Route>,
+    errorElement: <Error></Error>,
+    children: [
       {
-        path:'/',
-      
-        element:<Home></Home>
+        path: '/',
+
+        element: <Home></Home>
       },
       {
-        path:'/products',
-      
-        element:<Products></Products>
+        path: '/products',
+
+        element: <Products></Products>
       },
       {
-        path:'/login',
-      
-        element:<Login></Login>
+        path: '/login',
+
+        element: <Login></Login>
       },
- 
+
       {
-        path:'/register',
-      
-        element:<Register></Register>
+        path: '/register',
+
+        element: <Register></Register>
       },
       // {
       //   path:'/dashboard',
-      
+
       //   element:<Dashboard></Dashboard>
       // },
     ]
-   
+
   },
   {
-    path:"/dashboard",
-    element:<Dashboard></Dashboard>,
-    children:[
+    path: "/dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
       {
-        path:"/dashboard",
-        element:<Myprofile></Myprofile>
+        path: "/dashboard",
+        element: <Myprofile></Myprofile>
       },
-      
+
       {
-        path:"myproducts",
-        element:<Myproducts></Myproducts>
+        path: "/dashboard/myproducts",
+        element: <Myproducts></Myproducts>
       },
-      
       {
-        path:"addproducts",
-        element:<PrivateRoute><Addproducts></Addproducts></PrivateRoute>
+        path: "/dashboard/update/:id",
+        element: <Update></Update>
       },
-      
+
+      {
+        path: "addproducts",
+        element: <PrivateRoute><Addproducts></Addproducts></PrivateRoute>
+      },
+
     ]
   }
 ]);
 
+const queryClient = new QueryClient();
+
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Authentication>
-    <RouterProvider router={router} />
 
-    </Authentication>
+    <QueryClientProvider client={queryClient}>
+      <Authentication>
+        <RouterProvider router={router} />
+
+      </Authentication>
+    </QueryClientProvider>
 
   </React.StrictMode>
 );
