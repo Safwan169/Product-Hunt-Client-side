@@ -46,7 +46,7 @@ const From = () => {
         date
         
       }
-      // console.log((new Date(date)).toLocaleString())
+      console.log((new Date(date)).toLocaleString())
       // console.log(date)
   
         axios.post('http://localhost:5000/add',data)
