@@ -63,7 +63,7 @@ const Navbar = () => {
                 </div>
                 {/* when user not log in  */}
                 {user ? <div className="navbar-end">
-                    <button onClick={() => setYes2(!yes2)}> <img className='rounded-3xl w-[50px]' src={user.photoURL} alt="" /> </button>
+                    <button onClick={() => setYes2(!yes2)}> <img className='rounded-3xl w-[50px]' src={user.photoURL } alt="data" /> </button>
                 </div> : <div className="navbar-end">
                     <button onClick={() => setYes(!yes)}><IoPersonCircleOutline size={40} /> </button>
                 </div>}

@@ -12,13 +12,13 @@ const Myprofile = () => {
 
                     <img
                         className="w-36 bg-white p-1 h-36 rounded-full mx-auto mb-4"
-                        src={user.photoURL}
+                        src={user?.photoURL}
                         alt="User"
                     />
                     <div className='bg-white'>
-                        <h2 className="text-2xl font-bold mb-4">{user.displayName}</h2>
+                        <h2 className="text-2xl font-bold mb-4">{user?.displayName}</h2>
 
-                        <p className="text-gray-700 mb-4">Email: {user.email}</p>
+                        <p className="text-gray-700 mb-4">Email: {user?.email}</p>
                     </div>
                     {/* 
                     {!user.isSubscribed ? (
