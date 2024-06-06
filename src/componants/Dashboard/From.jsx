@@ -29,7 +29,7 @@ const From = () => {
     const handleSubmit = (e) => {
       e.preventDefault();
       const date=Date.now()
-      const vote='0'
+      const vote= 0
       const status='pending'
       // Handle form submission logic here
       const data={

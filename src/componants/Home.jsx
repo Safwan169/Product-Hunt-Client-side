@@ -4,10 +4,15 @@ import Banner from './Banner';
 import Heading from './Dashboard/Heading';
 import { useLoaderData } from 'react-router-dom';
 import Feretured from './Feretured';
+import { useQuery } from '@tanstack/react-query';
+import { data } from 'autoprefixer';
+import Alldata from './Alldata';
 
 const Home = () => {
-    const alldata=useLoaderData()
-    const data=alldata.sort((a,b)=>(b.date)-a.date)
+ 
+    // const alldata=useLoaderData()
+    const [cart]=Alldata()
+    const data=cart.sort((a,b)=>(b.date)-a.date)
     const lastData=data.slice(0,4)
     console.log(lastData)
 
