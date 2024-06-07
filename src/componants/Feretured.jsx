@@ -1,7 +1,7 @@
 import { data } from 'autoprefixer';
 import React, { useState } from 'react';
 import Contex from './Authentication/Contex';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Alldata from './Alldata';
 import BTn from './BTn';
@@ -10,10 +10,9 @@ import { FaShareFromSquare } from 'react-icons/fa6';
 
 const Feretured = ({ data }) => {
 
-    const [votee, setVote] = useState()
     const [, refetch] = Alldata()
     const { description, date, externalLinks, productImage, productName, vote, tags, _id, voteUser } = data
-    const { user, loading } = Contex()
+    const { user } = Contex()
 
     console.log(tags)
     const Datee = ((new Date(date)).toLocaleString())
@@ -22,9 +21,7 @@ const Feretured = ({ data }) => {
 
     console.log(date, Datee)
 
-    // DO:Vote button work
-    // const vt = voteUser?.filter(d => d == user?.email)
-    // setVote()
+    
 
     const navigate = useNavigate()
     const handleVote = (id) => {
@@ -33,7 +30,6 @@ const Feretured = ({ data }) => {
 
             axios.put(`http://localhost:5000/vote/${id}`, user)
                 .then(res => {
-                    console.log(res.data)
 
                     refetch()
 
@@ -45,6 +41,16 @@ const Feretured = ({ data }) => {
             navigate('/login')
         }
     }
+    // const slicedText = sliceText(description, 0, 5);
+    const startIndex = 0;
+    const endIndex = 35;
+    const text=description
+  
+    const sliceTextByLetters = (text, start, end) => {
+      return text.slice(start, end);
+    };
+  
+    const slicedText = sliceTextByLetters(text, startIndex, endIndex);
 
     return (
         <div>
@@ -52,8 +58,8 @@ const Feretured = ({ data }) => {
              card-side bg-base-100 shadow-xl">
                 <figure><img className='w-20' src={productImage} alt="Movie" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title">{productName} <span><a href={`${externalLinks}`}><FaShareFromSquare className='hover:text-orange-400' /></a></span> </h2>
-                    <p>{description}</p>
+                    <h2 className="card-title"><Link to={'/details'}>{productName}</Link> <span><a href={`${externalLinks}`}><FaShareFromSquare className='hover:text-orange-400' /></a></span> </h2>
+                    <p>{slicedText}........</p>
                     <div className='w-max flex gap-5'>
                         {tags.map(d => <p className=''># <span className='font-bold text-purple-500'>{d.text}</span></p>
 

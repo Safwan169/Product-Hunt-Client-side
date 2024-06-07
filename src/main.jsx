@@ -19,6 +19,7 @@ import Dashboard from "./componants/Dashboard/Dashboard";
 import PrivateRoute from "./componants/PrivateRoute";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Update from "./Update";
+import Details from "./componants/Details";
 
 const router = createBrowserRouter([
   {
@@ -49,11 +50,11 @@ const router = createBrowserRouter([
 
         element: <Register></Register>
       },
-      // {
-      //   path:'/dashboard',
+      {
+        path:'/details',
 
-      //   element:<Dashboard></Dashboard>
-      // },
+        element:<Details></Details>
+      },
     ]
 
   },
