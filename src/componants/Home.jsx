@@ -13,6 +13,7 @@ const Home = () => {
     // const alldata=useLoaderData()
     const [cart]=Alldata()
     const data=cart.sort((a,b)=>(b.date)-a.date)
+    const vote=cart.sort((a,b)=>(b.date)-a.date)
     const lastData=data.slice(0,4)
     console.log(lastData)
 
@@ -21,6 +22,9 @@ const Home = () => {
             <Banner></Banner>
             <Heading text={"Featured Products"}></Heading>
             {lastData.map(d=><Feretured data={d}></Feretured>)}
+            <Heading text={"Trending Products"}></Heading>
+
+            {vote.map(d=><Feretured data={d}></Feretured>)}
         </div>
     );
 };
