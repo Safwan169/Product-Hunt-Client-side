@@ -41,16 +41,12 @@ const Feretured = ({ data }) => {
             navigate('/login')
         }
     }
-    // const slicedText = sliceText(description, 0, 5);
-    const startIndex = 0;
-    const endIndex = 35;
-    const text=description
+   ;
+ 
+ const dd= description.slice(0,35)
+
   
-    const sliceTextByLetters = (text, start, end) => {
-      return text.slice(start, end);
-    };
-  
-    const slicedText = sliceTextByLetters(text, startIndex, endIndex);
+
 
     return (
         <div>
@@ -59,7 +55,7 @@ const Feretured = ({ data }) => {
                 <figure><img className='w-20' src={productImage} alt="Movie" /></figure>
                 <div className="card-body">
                     <h2 className="card-title"><Link to={'/details'}>{productName}</Link> <span><a href={`${externalLinks}`}><FaShareFromSquare className='hover:text-orange-400' /></a></span> </h2>
-                    <p>{slicedText}........</p>
+                    <p>{dd}........</p>
                     <div className='w-max flex gap-5'>
                         {tags.map(d => <p className=''># <span className='font-bold text-purple-500'>{d.text}</span></p>
 
