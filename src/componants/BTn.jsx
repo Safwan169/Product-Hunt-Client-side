@@ -6,7 +6,7 @@ import Alldata from './Alldata';
 const BTn = ({data,voteBTn,_id,vote}) => {
     const {user,loading}=Contex()
     const [,refetch]=Alldata()
-    const dd= data.find(d=>d==user?.email)
+    const dd= data?.find(d=>d==user?.email)
     const handleVoteDelete=id=>{
         axios.put(`http://localhost:5000/voteDec/${id}`, user)
         .then(res => {

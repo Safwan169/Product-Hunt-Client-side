@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Alldata from './Alldata';
 import BTn from './BTn';
+import { FaShareFromSquare } from 'react-icons/fa6';
 
 
 const Feretured = ({ data }) => {
@@ -51,7 +52,7 @@ const Feretured = ({ data }) => {
              card-side bg-base-100 shadow-xl">
                 <figure><img className='w-20' src={productImage} alt="Movie" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title">{productName}</h2>
+                    <h2 className="card-title">{productName} <span><a href={`${externalLinks}`}><FaShareFromSquare className='hover:text-orange-400' /></a></span> </h2>
                     <p>{description}</p>
                     <div className='w-max flex gap-5'>
                         {tags.map(d => <p className=''># <span className='font-bold text-purple-500'>{d.text}</span></p>
