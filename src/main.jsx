@@ -20,6 +20,8 @@ import PrivateRoute from "./componants/PrivateRoute";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Update from "./Update";
 import Details from "./componants/Details";
+import DataLoad from "./DataLoad";
+import ALLproducts from "./componants/ALLproducts";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +39,7 @@ const router = createBrowserRouter([
       {
         path: '/products',
 
-        element: <Products></Products>
+        element: <DataLoad><ALLproducts></ALLproducts></DataLoad>
       },
       {
         path: '/login',
@@ -51,9 +53,10 @@ const router = createBrowserRouter([
         element: <Register></Register>
       },
       {
-        path:'/details',
+        path:'/details/:id',
+        // loader:({params})=>fetch(`http://localhost:5000/alldata/${params.id}`),
 
-        element:<Details></Details>
+        element:<PrivateRoute><DataLoad><Details></Details></DataLoad></PrivateRoute>
       },
     ]
 

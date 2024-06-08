@@ -10,38 +10,19 @@ import { FaShareFromSquare } from 'react-icons/fa6';
 
 const Feretured = ({ data }) => {
 
-    const [, refetch] = Alldata()
+    // const [, refetch] = Alldata()
     const { description, date, externalLinks, productImage, productName, vote, tags, _id, voteUser } = data
     const { user } = Contex()
 
     console.log(tags)
     const Datee = ((new Date(date)).toLocaleString())
-    console.log(new Date(date))
-    console.log(voteUser)
+    // console.log(new Date(date))
+    // console.log(voteUser)
 
-    console.log(date, Datee)
+    // console.log(date, Datee)
 
     
 
-    const navigate = useNavigate()
-    const handleVote = (id) => {
-
-        if (user) {
-
-            axios.put(`http://localhost:5000/vote/${id}`, user)
-                .then(res => {
-
-                    refetch()
-
-                })
-
-
-        }
-        else {
-            navigate('/login')
-        }
-    }
-   ;
  
  const dd= description.slice(0,35)
 
@@ -54,7 +35,7 @@ const Feretured = ({ data }) => {
              card-side bg-base-100 shadow-xl">
                 <figure><img className='w-20' src={productImage} alt="Movie" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title"><Link to={'/details'}>{productName}</Link> <span><a href={`${externalLinks}`}><FaShareFromSquare className='hover:text-orange-400' /></a></span> </h2>
+                    <h2 className="card-title"><Link to={`/details/${_id}`}>{productName}</Link> <span><a href={`${externalLinks}`}><FaShareFromSquare className='hover:text-orange-400' /></a></span> </h2>
                     <p>{dd}........</p>
                     <div className='w-max flex gap-5'>
                         {tags.map(d => <p className=''># <span className='font-bold text-purple-500'>{d.text}</span></p>
@@ -64,7 +45,7 @@ const Feretured = ({ data }) => {
                     <p>{Datee}</p>
 
                     <div className="card-actions justify-end">
-                        <BTn vote={vote} voteBTn={handleVote} _id={_id} data={voteUser}></BTn>
+                        <BTn vote={vote}  _id={_id} data={voteUser}></BTn>
 
                     </div>
                 </div>
