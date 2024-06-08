@@ -14,7 +14,7 @@ const Feretured = ({ data }) => {
     const { description, date, externalLinks, productImage, productName, vote, tags, _id, voteUser } = data
     const { user } = Contex()
 
-    console.log(tags)
+    // console.log(tags)
     const Datee = ((new Date(date)).toLocaleString())
     // console.log(new Date(date))
     // console.log(voteUser)

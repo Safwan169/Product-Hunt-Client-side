@@ -35,8 +35,8 @@ const Details = () => {
 
     const Datee = new Date(date).toLocaleString()
     return (
-        <div>
-            <div className="card mx-5 my-5 px-3
+        <div className='z-10'>
+            <div className="card z-10 mx-5 my-5 px-3
          card-side bg-base-100 shadow-xl">
                 <figure><img className='w-full h-[400px]' src={productImage} alt="Movie" /></figure>
                 <div className="card-body">

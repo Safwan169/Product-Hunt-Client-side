@@ -22,6 +22,8 @@ import Update from "./Update";
 import Details from "./componants/Details";
 import DataLoad from "./DataLoad";
 import ALLproducts from "./componants/ALLproducts";
+import Reported from "./Reported";
+import Review from "./componants/Review";
 
 const router = createBrowserRouter([
   {
@@ -63,7 +65,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       {
         path: "/dashboard",
@@ -82,6 +84,13 @@ const router = createBrowserRouter([
       {
         path: "addproducts",
         element: <PrivateRoute><Addproducts></Addproducts></PrivateRoute>
+      },
+      {
+        path: "/dashboard/reported",
+        element: <Reported></Reported>
+      },   {
+        path: "/dashboard/review",
+        element: <Review></Review>
       },
 
     ]

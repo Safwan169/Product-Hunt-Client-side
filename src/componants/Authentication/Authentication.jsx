@@ -12,6 +12,7 @@ const Authentication = ({ children }) => {
     const [user, setUser] = useState()
     const [dep, setDep] = useState(false)
     const [dep2, setDep2] = useState(false)
+    const [UserData,setUserData]=useState()
 
     // queries data load state
     const [load,setLoad]=useState(false)
@@ -41,7 +42,18 @@ const Authentication = ({ children }) => {
                 setLoading(false)
 
                 setUser(user)
+                
+                const data={
+                    email:user.email,
+                    status:'moderator',
 
+                }
+        // loader:({params})=>fetch(`http://localhost:5000/alldata/${params.id}`),
+                axios.post(` http://localhost:5000/user/${user.email}`, data)
+                .then(res => {
+                    console.log('nowdata', res.data);
+                    setUserData(res.data)
+                })
                 // axios.post('https://assinment-11-server-side-alpha.vercel.app/jwt', user, { withCredentials: true })
                 // .then(res => {
                 //     console.log('token response', res.data);
@@ -86,7 +98,8 @@ const Authentication = ({ children }) => {
         loading,
         setLoading,
         load,
-        setLoad
+        setLoad,
+        UserData
     }
     return (
         <myContext.Provider value={authInfo}>
