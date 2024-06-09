@@ -90,7 +90,7 @@ const router = createBrowserRouter([
         element: <Reported></Reported>
       },   {
         path: "/dashboard/review",
-        element: <Review></Review>
+        element: <DataLoad><Review></Review></DataLoad>
       },
 
     ]

@@ -30,9 +30,9 @@ const Review = () => {
     };
 
     SetData(sortDataByStatus(cart));
-  }, []);
+  }, [cart]);
  
-console.log(cart) 
+// console.log(Dataa) 
 
 
 
@@ -42,8 +42,11 @@ console.log(cart)
   // });
   // SetData(sortedData);
   // console.log(cart)
+
   const handleAcepted=id=>{
-    axios.put(`http://localhost:5000/status/${id}`)
+  const text="Accepted"
+const dd={text}
+    axios.put(`http://localhost:5000/status/${id}`,dd)
     .then(res=>{
       Swal.fire({
         position: "top-end",
@@ -55,6 +58,45 @@ console.log(cart)
   
         refetch()}
   )
+
+  }
+
+  const handleDelete=id=>{
+
+    const text="Rejected"
+const dd={text}
+  
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+    axios.put(`http://localhost:5000/status/${id}`,dd)
+    .then(res=>{
+
+
+      refetch()
+
+      Swal.fire({
+        title: "Deleted!",
+        text: "This File has been deleted.",
+        icon: "success"
+      });}
+
+    )
+    
+
+      
+        }
+      });
+  
+  
 
     // TODO:back hand ar kaj baki r baki hoilo status update koira abr saita refresh korta hoibo abr aikan ta sorai tay hoibo ai product ta abr delete ar kaj o baki .
   }
@@ -87,11 +129,8 @@ console.log(cart)
                         <td className=' '><Link className='btn' to={`/details/${data._id}`}><TbListDetails size={25} className='   text-green-400' /></Link></td>
                         <td className=''><span className='btn'><MdOutlineFeaturedPlayList className='text-blue-400' size={25} /></span></td>
                         <td className=' text-gray-400 font-semibold'>{data.status}</td>   
-                        {data.status=="Accepted" || data.status =="Rejected" ?  <td ><button className=''><span  className=''><MdOutlineFileDownloadDone size={25} className='text-gray-400 disabled' /></span></button></td>:<td onClick={()=>handleAcepted(data._id)}  className={``}><button className=''><span  className=''><MdOutlineFileDownloadDone size={25} className='text-green-400 ' /></span></button></td>}
-                        {data.status=="Accepted" || data.status == "Rejected"? 
-                        <td><button className='btn'><TiDelete size={25} className='text-gray-400 disabled' /></button></td>
-
-                          :<td><button className='btn'><TiDelete size={25} className='text-red-500' /></button></td>}
+                        {data.status=="Accepted" || data.status =="Rejected" ?  <td ><button className=''><span  className=''><MdOutlineFileDownloadDone size={25} className='text-gray-400 disabled' /></span></button></td>:<td onClick={()=>handleAcepted(data._id)}  className={`btn`}><button className=''><span  className=''><MdOutlineFileDownloadDone size={25} className='text-green-400 ' /></span></button></td>}
+                        {data.status=="Accepted" || data.status == "Rejected"? <td><button className='btn'><TiDelete size={25} className='text-gray-400 disabled' /></button></td>:<td onClick={()=>handleDelete(data._id)}><button className='btn'><TiDelete size={25} className='text-red-500' /></button></td>}
                      
                       
                     </tr>
