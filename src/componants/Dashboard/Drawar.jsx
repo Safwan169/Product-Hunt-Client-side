@@ -1,10 +1,25 @@
 import React from 'react';
 import { FiAlignJustify } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import alUser from './alUser';
 import Contex from '../Authentication/Contex';
 
 const Drawar = () => {
-    const { UserData } = Contex()
+    // const {UserData} = Contex()
+    const {user}=Contex()
+    const [user2,refetchUser,]=alUser()
+    const data=user2.find((d)=>d.email==user.email)
+    // console.log(user2 ,data,UserData,)
+    // console.log(data)
+  
+
+
+
+    
+ 
+
+    // todo :not update imiditealy
+
     return (
 
         <div className="drawer ml-4 block z-20 mt-4">
@@ -23,23 +38,38 @@ const Drawar = () => {
 
                     <div className="divider"></div>
 
-                    {UserData?.status == 'user' ? <>
+                    {data?.status == 'User' ? <>
                         <Link to={'/dashboard'}><a>My Profile</a></Link>
                         <Link to={'addproducts'} ><a>Add Products</a></Link>
                         <Link to={'/dashboard/myproducts'}><a>My Products</a></Link>
 
 
-                    </> : <>{UserData?.status == 'moderator' ? <>
+                    </> : <>{data?.status == 'Moderator' ? <>
                         {/* for moderator */}
                         <Link to={'/dashboard'}><a>My Profile</a></Link>
 
-       
-                         <Link to={'/dashboard/review'}><a> Product Review Queue</a></Link>
+
+                        <Link to={'/dashboard/review'}><a> Product Review Queue</a></Link>
                         <Link to={'/dashboard/reported'}><a>Reported Contents </a></Link>
 
                     </> : <>
+                    
+                    {
+                        data?.status=="Admin"&&<>
                         {/* for Admin */}
 
+
+                        <Link to={'/dashboard'}><a>My Profile</a></Link>
+
+
+                        <Link to={'/dashboard/statistics'}><a> Statistics</a></Link>
+                        <Link to={'/dashboard/manageUser'}><a>Manage Users</a></Link>
+                        <Link to={'/dashboard/coupons'}><a>Manage Coupons </a></Link>
+
+                    </>
+                    }
+                    
+                    
                     </>
                     }
                     </>

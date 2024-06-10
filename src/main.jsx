@@ -24,6 +24,9 @@ import DataLoad from "./DataLoad";
 import ALLproducts from "./componants/ALLproducts";
 import Reported from "./Reported";
 import Review from "./componants/Review";
+import Statistics from "./componants/Dashboard/Statistics";
+import ManageUser from "./componants/Dashboard/ManageUser";
+import Coupons from "./componants/Dashboard/Coupons";
 
 const router = createBrowserRouter([
   {
@@ -88,9 +91,22 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/reported",
         element: <Reported></Reported>
-      },   {
+      },
+         {
         path: "/dashboard/review",
         element: <DataLoad><Review></Review></DataLoad>
+      },
+         {
+        path: "/dashboard/statistics",
+        element: <DataLoad><Statistics></Statistics></DataLoad>
+      },
+         {
+        path: "/dashboard/manageUser",
+        element: <DataLoad><ManageUser></ManageUser></DataLoad>
+      },
+         {
+        path: "/dashboard/coupons",
+        element: <DataLoad><Coupons></Coupons></DataLoad>
       },
 
     ]

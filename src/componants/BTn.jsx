@@ -3,10 +3,12 @@ import Contex from './Authentication/Contex';
 import axios from 'axios';
 import Alldata from './Alldata';
 import { useNavigate } from 'react-router-dom';
+import Featured from './Featured';
 
 const BTn = ({data,_id,vote }) => {
     const {user,loading}=Contex()
     const [,refetch]=Alldata()
+    const [,refetch1]=Featured()
 
     const navigate = useNavigate()
     const handleVote = (id) => {
@@ -16,6 +18,7 @@ const BTn = ({data,_id,vote }) => {
             axios.put(`http://localhost:5000/vote/${id}`, user)
                 .then(res => {
                     refetch()
+                    refetch1()
 
                 })
 
@@ -35,6 +38,8 @@ const BTn = ({data,_id,vote }) => {
         .then(res => {
             console.log(res.data)
             refetch()
+            refetch1()
+
 
         })
     }

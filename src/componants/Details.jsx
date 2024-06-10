@@ -5,6 +5,7 @@ import Alldata from './Alldata';
 import { data } from 'autoprefixer';
 import axios from 'axios';
 import { useState } from 'react';
+import Swal from 'sweetalert2';
 
 const Details = () => {
     // const data = useLoaderData()
@@ -18,7 +19,7 @@ const Details = () => {
     // ),[dep]})
     // const [productNames, setProductName] = useState('');
 
-    const dd = axios.get(`http://localhost:5000/alldata`).data
+    // const dd = axios.get(`http://localhost:5000/alldata`).data
 
 
 
@@ -27,7 +28,24 @@ const Details = () => {
     console.log(detailsData)
 
 
-
+const handleReported=(productName,_id)=>{
+    const data={
+        name:productName,
+        id:_id
+    }
+    axios.post(`http://localhost:5000/report`,data)
+    .then(res=>{
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your Report has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          
+    })
+    
+}
 
     const { description, date, externalLinks, productImage, productName, vote, tags, _id, voteUser, photoURL, displayName, email } = detailsData
 
@@ -40,7 +58,11 @@ const Details = () => {
          card-side bg-base-100 shadow-xl">
                 <figure><img className='w-full h-[400px]' src={productImage} alt="Movie" /></figure>
                 <div className="card-body">
+                    <span className='flex justify-between'>
                     <h2 className="card-title">{productName}<span><a href={`${externalLinks}`}><FaShareFromSquare className='hover:text-orange-400' /></a></span> </h2>
+                    <button onClick={()=>{handleReported(productName,_id)}} className=' btn bg-red-500 font-bold mb-2 text-white '>Report</button>
+
+                    </span>
                     <p>{description}</p>
                     <div className='w-max flex gap-5'>
                         {tags.map(d => <p className=''># <span className='font-bold text-purple-500'>{d.text}</span></p>

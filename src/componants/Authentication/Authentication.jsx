@@ -45,15 +45,21 @@ const Authentication = ({ children }) => {
                 
                 const data={
                     email:user.email,
-                    status:'moderator',
+                    name:user.displayName,
+                    status:'User',
 
                 }
         // loader:({params})=>fetch(`http://localhost:5000/alldata/${params.id}`),
                 axios.post(` http://localhost:5000/user/${user.email}`, data)
                 .then(res => {
                     console.log('nowdata', res.data);
-                    setUserData(res.data)
+                    // setUserData(res.data)
                 })
+                useEffect(()=>{axios.get(` http://localhost:5000/user/${user.email}`, data)
+                .then(res => {
+                    console.log('nowdata', res.data);
+                    setUserData(res.data)
+                })},[dep])
                 // axios.post('https://assinment-11-server-side-alpha.vercel.app/jwt', user, { withCredentials: true })
                 // .then(res => {
                 //     console.log('token response', res.data);

@@ -24,7 +24,7 @@ const Feretured = ({ data }) => {
     
 
  
- const dd= description.slice(0,35)
+ const dd= description?.slice(0,35)
 
   
 
@@ -38,7 +38,7 @@ const Feretured = ({ data }) => {
                     <h2 className="card-title"><Link to={`/details/${_id}`}>{productName}</Link> <span><a href={`${externalLinks}`}><FaShareFromSquare className='hover:text-orange-400' /></a></span> </h2>
                     <p>{dd}........</p>
                     <div className='w-max flex gap-5'>
-                        {tags.map(d => <p className=''># <span className='font-bold text-purple-500'>{d.text}</span></p>
+                        {tags?.map(d => <p className=''># <span className='font-bold text-purple-500'>{d.text}</span></p>
 
                         )}
                     </div>

@@ -7,13 +7,15 @@ import Feretured from './Feretured';
 import { useQuery } from '@tanstack/react-query';
 import { data } from 'autoprefixer';
 import Alldata from './Alldata';
+import Featured from './Featured';
 
 const Home = () => {
 
     // const alldata=useLoaderData()
     const [cart] = Alldata()
-    const data = cart.sort((a, b) => (b.date - a.date))
-    const lastData = data.slice(0, 4)
+    const [featured]=Featured()
+    const data = featured?.sort((a, b) => (b.date - a.date))
+    const lastData = data?.slice(0, 4)
     // console.log(vote)
     const vote = cart.sort((a, b) => (b.vote - a.vote))
 
@@ -22,7 +24,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Heading text={"Featured Products"}></Heading>
-            {lastData.map(d => <Feretured data={d}></Feretured>)}
+            {lastData?.map(d => <Feretured data={d}></Feretured>)}
 
             <div className='lg:mt-20 md:lg:mt-20 mt-10'>
             <Heading text={"Trending Products"}></Heading>

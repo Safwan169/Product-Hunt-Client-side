@@ -19,8 +19,8 @@ const Review = () => {
   //   { id: 6, name: "Item 6", status: "rejected" }
   // ]);
 
-  const [cart,refetch,] = Alldata()
-  const [Dataa,SetData]=useState([ ])
+  const [cart, refetch,] = Alldata()
+  const [Dataa, SetData] = useState([])
 
 
   useEffect(() => {
@@ -31,122 +31,138 @@ const Review = () => {
 
     SetData(sortDataByStatus(cart));
   }, [cart]);
- 
-// console.log(Dataa) 
 
 
 
-  // const statusOrder = ["pending", "Accepted", "Rejected"];
-  // const sortedData = cart.sort((a, b) => {
-  //   return statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status);
-  // });
-  // SetData(sortedData);
-  // console.log(cart)
+  // featured function
+  const handleFetured = data => {
+    axios.post(`http://localhost:5000/fetured`, data)
 
-  const handleAcepted=id=>{
-  const text="Accepted"
-const dd={text}
-    axios.put(`http://localhost:5000/status/${id}`,dd)
-    .then(res=>{
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Accepted",
-        showConfirmButton: false,
-        timer: 1500
-      }),
-  
-        refetch()}
-  )
+      .then(res => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${data.productName} now available in Featured section `,
+          showConfirmButton: false,
+          timer: 1500
+        }),
+
+          refetch()
+      }
+      )
+  }
+
+
+
+
+
+
+  const handleAcepted = id => {
+    const text = "Accepted"
+    const dd = { text }
+    axios.put(`http://localhost:5000/status/${id}`, dd)
+      .then(res => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Accepted",
+          showConfirmButton: false,
+          timer: 1500
+        }),
+
+          refetch()
+      }
+      )
 
   }
 
-  const handleDelete=id=>{
+  const handleDelete = id => {
 
-    const text="Rejected"
-const dd={text}
-  
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then((result) => {
-        if (result.isConfirmed) {
+    const text = "Rejected"
+    const dd = { text }
 
-    axios.put(`http://localhost:5000/status/${id}`,dd)
-    .then(res=>{
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        axios.put(`http://localhost:5000/status/${id}`, dd)
+          .then(res => {
 
 
-      refetch()
+            refetch()
 
-      Swal.fire({
-        title: "Deleted!",
-        text: "This File has been deleted.",
-        icon: "success"
-      });}
+            Swal.fire({
+              title: "Deleted!",
+              text: "This File has been deleted.",
+              icon: "success"
+            });
+          }
 
-    )
-    
+          )
 
-      
-        }
-      });
-  
-  
+
+
+      }
+    });
+
+
 
     // TODO:back hand ar kaj baki r baki hoilo status update koira abr saita refresh korta hoibo abr aikan ta sorai tay hoibo ai product ta abr delete ar kaj o baki .
   }
   return (
 
-     
 
-<>
+
+    <>
       <Heading text={' Products Review'}></Heading>
-      
+
       <div className='w-svw   mx-auto'>
-            <div className="z-10 lg:mx-32 md:mt-20 mx-auto  lg:mt-10 md:mx-32">
-                <table className="table table-xs">
-                    <thead>
-                        <tr>
-                            <th className=''></th>
-                            <th className=' '>Product Name</th>
-                            <th className=' '>Details</th>
-                            <th className=' '>Make Featured</th>
-                            <th className=''>Status</th>
-                            <th className='w-4'></th>
-                            <th></th>
-                         
-                        </tr>
-                    </thead>
-                      {
-                        Dataa?.map((data,index)=> <tbody> <tr className=''>
-                        <th>{index+1}</th>
-                        <td>{data.productName}</td>
-                        <td className=' '><Link className='btn' to={`/details/${data._id}`}><TbListDetails size={25} className='   text-green-400' /></Link></td>
-                        <td className=''><span className='btn'><MdOutlineFeaturedPlayList className='text-blue-400' size={25} /></span></td>
-                        <td className=' text-gray-400 font-semibold'>{data.status}</td>   
-                        {data.status=="Accepted" || data.status =="Rejected" ?  <td ><button className=''><span  className=''><MdOutlineFileDownloadDone size={25} className='text-gray-400 disabled' /></span></button></td>:<td onClick={()=>handleAcepted(data._id)}  className={`btn`}><button className=''><span  className=''><MdOutlineFileDownloadDone size={25} className='text-green-400 ' /></span></button></td>}
-                        {data.status=="Accepted" || data.status == "Rejected"? <td><button className='btn'><TiDelete size={25} className='text-gray-400 disabled' /></button></td>:<td onClick={()=>handleDelete(data._id)}><button className='btn'><TiDelete size={25} className='text-red-500' /></button></td>}
-                     
-                      
-                    </tr>
-                    </tbody>
+        <div className="z-10 lg:mx-32 md:mt-20 mx-auto  lg:mt-10 md:mx-32">
+          <table className="table table-xs">
+            <thead>
+              <tr>
+                <th className=''></th>
+                <th className=' '>Product Name</th>
+                <th className=' '>Details</th>
+                <th className=' '>Make Featured</th>
+                <th className=''>Status</th>
+                <th className='w-4'></th>
+                <th></th>
 
-                    )
-                      }
+              </tr>
+            </thead>
+            {
+              Dataa?.map((data, index) => <tbody> <tr className=''>
+                <th>{index + 1}</th>
+                <td>{data.productName}</td>
+                <td className=' '><Link className='btn' to={`/details/${data._id}`}><TbListDetails size={25} className='   text-green-400' /></Link></td>
+                <td onClick={() => handleFetured(data)} className=''><span className='btn'><MdOutlineFeaturedPlayList className='text-blue-400' size={25} /></span></td>
+                <td className=' text-gray-400 font-semibold'>{data.status}</td>
+                {data.status == "Accepted" || data.status == "Rejected" ? <td ><button className=''><span className=''><MdOutlineFileDownloadDone size={25} className='text-gray-400 disabled' /></span></button></td> : <td onClick={() => handleAcepted(data._id)} className={`btn`}><button className=''><span className=''><MdOutlineFileDownloadDone size={25} className='text-green-400 ' /></span></button></td>}
+                {data.status == "Accepted" || data.status == "Rejected" ? <td><button className='btn'><TiDelete size={25} className='text-gray-400 disabled' /></button></td> : <td onClick={() => handleDelete(data._id)}><button className='btn'><TiDelete size={25} className='text-red-500' /></button></td>}
 
 
+              </tr>
+              </tbody>
+
+              )
+            }
 
 
-                </table>
-            </div>
+
+
+          </table>
         </div>
-      </>
-    
+      </div>
+    </>
+
 
 
 
