@@ -9,19 +9,20 @@ import { NavLink } from 'react-router-dom';
 
 const ALLproducts = () => {
     const { user } = Contex()
-    const [cart] = Alldata()
+    const [cart, refetch] = Alldata()
 
     const [All, setAll] = useState(cart.slice(0, 6))
 
     const [sff, setSf] = useState(cart.length)
-
     const dataa = Math.ceil(sff / 6)
+    const sf2 = [...Array(dataa).keys()]
+    const [peg, setPeg] = useState(sf2)
 
 
 
-    const sf = [...Array(dataa).keys()]
 
-    console.log(dataa, sf, cart)
+
+    // console.log(dataa, sf, cart)
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -31,7 +32,13 @@ const ALLproducts = () => {
         axios.post(`http://localhost:5000/alldataTags`, dd)
             .then(res => {
                 setAll(res.data.slice(0, 6))
+
+
                 setSf(res.data.length)
+
+                const dataa = Math.ceil(res.data.length / 6)
+                const sf2 = [...Array(dataa).keys()]
+                setPeg(sf2)
 
 
             })
@@ -58,10 +65,15 @@ const ALLproducts = () => {
     }
 
     const handleChange = index => {
-        console.log(index)
-        const dataa = [Math.ceil(All / `${index}`)]
+        // console.log(index)
+        // const dataa = [Math.ceil(All / `${index}`)]
         const dd = cart.slice(index * 6, (index + 1) * 6)
         setAll(dd)
+        refetch()
+
+        const dataa = Math.ceil(sff / 6)
+        const sf2 = [...Array(dataa).keys()]
+        setPeg(sf2)
 
     }
 
@@ -93,7 +105,7 @@ const ALLproducts = () => {
 
             </div>
             <div className="join text-center  w-full flex justify-center mt-14">
-                {sf.map((d, index) =>
+                {peg.map((d, index) =>
 
                     <NavLink className={({ isActive }) =>
                         isActive ? 'text-blue-500 border-b-2 border-blue-600  py-3  transition duration-300 ease-in-out ' : "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"}>                <input onClick={() => handleChange(index + 0)} className="join-item btn btn-square" type="radio" name="options" aria-label={`${index + 1}`} />
