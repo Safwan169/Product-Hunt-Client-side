@@ -38,32 +38,39 @@ const Authentication = ({ children }) => {
     //   
     const unSubscribe=onAuthStateChanged(auth, (user) => {
             if (user) {
-                console.log(user)
-                setLoading(false)
+                // console.log(user.displayName)
 
-                setUser(user)
-                
+                // jwt 
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                .then(res => {
+                    console.log('token response', res.data);
+                })
+
                 const data={
                     email:user.email,
-                    name:user.displayName,
+                    name: user?.displayName,
                     status:'User',
-
+            
                 }
-        // loader:({params})=>fetch(`http://localhost:5000/alldata/${params.id}`),
+            // loader:({params})=>fetch(`http://localhost:5000/alldata/${params.id}`),
                 axios.post(` http://localhost:5000/user/${user.email}`, data)
                 .then(res => {
                     console.log('nowdata', res.data);
                     // setUserData(res.data)
                 })
+                setLoading(false)
+
+                setUser(user)
+
+                
+                
                 useEffect(()=>{axios.get(` http://localhost:5000/user/${user.email}`, data)
                 .then(res => {
                     console.log('nowdata', res.data);
                     setUserData(res.data)
                 })},[dep])
-                // axios.post('https://assinment-11-server-side-alpha.vercel.app/jwt', user, { withCredentials: true })
-                // .then(res => {
-                //     console.log('token response', res.data);
-                // })
+
+                
             } else {
                 // User is signed out
                 // ...
@@ -71,12 +78,12 @@ const Authentication = ({ children }) => {
 
                 setUser(false)
 
-                // axios.post('https://assinment-11-server-side-alpha.vercel.app/logout', user, {
-                //     withCredentials: true
-                // })
-                //     .then(res => {
-                //         console.log(res.data);
-                //     })
+                axios.post('http://localhost:5000/logout', user, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log(res.data);
+                    })
             }
         });
 

@@ -10,6 +10,8 @@ const PrivateRoute = ({children}) => {
         return <span className="loading loading-ring absolute left-1/2 top-1/2 loading-lg"></span>
     }
    else if (user) {
+
+    
     return children
     
    }

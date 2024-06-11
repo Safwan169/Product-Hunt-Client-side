@@ -4,11 +4,13 @@ import { IoEyeOff, IoKey } from 'react-icons/io5';
 import { MdOutlineEmail } from 'react-icons/md';
 import Authtitle from './componants/Authtitle';
 import Withsocial from './componants/Withsocial';
-import Contex from './componants/Authentication/Contex';
 import Swal from 'sweetalert2';
+import Contex from './componants/Authentication/Contex';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
+    const navigate=useNavigate()
     const [eye, setEye] = useState(false)
 
     const [ok, setOk] = useState([])
@@ -30,6 +32,8 @@ const Login = () => {
                     timer: 2000    });
                     setDep(!dep)
                     // navigate('/')
+                    navigate('/')
+
           
         })
         .catch(error=>{

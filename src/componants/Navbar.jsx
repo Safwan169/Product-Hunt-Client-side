@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IoPersonCircleOutline } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Contex from './Authentication/Contex';
 import { auth } from '../../firebase.config';
 import Swal from 'sweetalert2';
@@ -27,9 +27,19 @@ const Navbar = () => {
     const { user } = Contex()
     const all = <>
 
-        <li><Link to={'/'}>Home</Link></li>
         <li>
-            <Link to={'/products'}>Products</Link>
+            {/* <Link to={'/'}>Home</Link>
+             */}
+
+            <NavLink to={'/'} className={({ isActive }) =>
+                isActive ? '  lg:ml-10 px-3 rounded-xl bg-black text-white btn h-5 border-b-2 hover:text-white hover:bg-black     ' : "font-bold text-gray-500 btn lg:ml-10 px-3 rounded-xl  "} >
+                Home</NavLink>
+        </li>
+        <li>
+            {/* <Link to={'/products'}>Products</Link> */}
+            <NavLink to={'/products'} className={({ isActive }) =>
+                isActive ? '  border-b-2  lg:ml-10 px-3 rounded-xl btn bg-black hover:text-white hover:bg-black text-white    ' : "  btn font-bold text-gray-500 lg:ml-10 px-3 rounded-xl  //"} >
+                Products</NavLink>
 
         </li>
         {/* <li><Link to={'/dashboard'}>Dashboard</Link></li> */}
@@ -41,7 +51,7 @@ const Navbar = () => {
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
-                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                        <div tabIndex={0} role="button" className="  lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -51,7 +61,7 @@ const Navbar = () => {
                         </ul>
 
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    <a className="  text-xl"><img className='w-20 h-10' src="https://i.ibb.co/HThTSQ8/hunt-showdown6756-logowik-com.webp" alt="" /></a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -63,7 +73,7 @@ const Navbar = () => {
                 </div>
                 {/* when user not log in  */}
                 {user ? <div className="navbar-end">
-                    <button onClick={() => setYes2(!yes2)}> <img className='rounded-3xl w-[50px]' src={user.photoURL } alt="data" /> </button>
+                    <button onClick={() => setYes2(!yes2)}> <img className='rounded-3xl w-[50px]' src={user.photoURL} alt="data" /> </button>
                 </div> : <div className="navbar-end">
                     <button onClick={() => setYes(!yes)}><IoPersonCircleOutline size={40} /> </button>
                 </div>}

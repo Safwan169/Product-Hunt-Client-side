@@ -11,8 +11,8 @@ const Footer = () => {
                     <div className="md:flex md:justify-between">
                         <div className="mb-6 md:mb-0">
                             <a href="https://flowbite.com/" className="flex items-center">
-                                <img src="https://i.ibb.co/hVCrvJt/ts-removebg-preview.png" className="h-10 me-3" alt="FlowBite Logo" />
-                                <span className="self-center text-2xl  font-semibold whitespace-nowrap dark:text-white">TSplus</span>
+                                <img src="https://i.ibb.co/HThTSQ8/hunt-showdown6756-logowik-com.webp" className="h-10 me-3" alt="FlowBite Logo" />
+                                <span className="self-center text-2xl  font-semibold whitespace-nowrap dark:text-white"></span>
                             </a>
                         </div>
                         <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
@@ -41,7 +41,7 @@ const Footer = () => {
                     </div>
                     <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-4" />
                     <div className="sm:flex sm:items-center sm:justify-between">
-                        <span className="text-sm text-gray-200 sm:text-center dark:text-gray-400">© 2024 <a href="https://flowbite.com/" className="hover:underline">TSplus™</a>. All Rights Reserved.
+                        <span className="text-sm text-gray-200 sm:text-center dark:text-gray-400">© 2024 <a href="https://flowbite.com/" className="hover:underline">Hunt PD™</a>. All Rights Reserved.
                         </span>
                         <div className="flex mt-4 sm:justify-center sm:mt-0">
                             <a href="#" className="text-gray-200 hover:text-blue-500 dark:hover:text-white">

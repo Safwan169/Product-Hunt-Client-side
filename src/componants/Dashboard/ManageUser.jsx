@@ -7,8 +7,10 @@ import { myContext } from '../Authentication/Authentication';
 
 const ManageUser = () => {
     const [user2,refetchUser,]=alUser()
-    const {dep,setDep}=useContext(myContext)
+    const {dep,setDep,user}=useContext(myContext)
     // console.log(user[0])
+    const user3=user2.filter(d=>d.email!==user.email)
+    
 
 
     const handleStatus=(id,text)=>{
@@ -44,7 +46,7 @@ const ManageUser = () => {
         </tr>
       </thead>
       {
-        user2?.map((data, index) => <tbody> <tr className=''>
+        user3?.map((data, index) => <tbody> <tr className=''>
           <th>{index + 1}</th>
           <td className='font-bold ' >{data.name}</td>
           <td className='font-bold text-red-500'>{data.email}</td>
@@ -52,7 +54,7 @@ const ManageUser = () => {
           <td className=' flex gap-5'>
             {data.status=="Admin"?<span > <  MdAdminPanelSettings className={`text-gray-400 `} size={35} /></span>
             :<span onClick={()=>handleStatus((data._id),"Admin")} > <  MdAdminPanelSettings className={`text-blue-500 `} size={35} /></span>}
-            {data.status=="Moderator" ? <span className='' > < MdAddModerator     className={`text-gray-400 disabled`} size={35} />
+            {(data.status=="Moderator" || data.status=="Admin") ? <span className='' > < MdAddModerator     className={`text-gray-400 disabled`} size={35} />
             </span>
              : <span className='' onClick={()=>handleStatus((data._id),"Moderator")}> < MdAddModerator     className={`text-blue-500 disabled`} size={35} />
             </span>}

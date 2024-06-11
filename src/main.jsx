@@ -27,12 +27,15 @@ import Review from "./componants/Review";
 import Statistics from "./componants/Dashboard/Statistics";
 import ManageUser from "./componants/Dashboard/ManageUser";
 import Coupons from "./componants/Dashboard/Coupons";
+import Admin from "./componants/Admin";
+import Moderator from "./componants/Moderator";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Route></Route>,
     errorElement: <Error></Error>,
+
     children: [
       {
         path: '/',
@@ -69,19 +72,21 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    errorElement: <Error></Error>,
+
     children: [
       {
-        path: "/dashboard",
-        element: <Myprofile></Myprofile>
+        path: "dashboard",
+        element: <PrivateRoute><Myprofile></Myprofile></PrivateRoute>
       },
 
       {
         path: "/dashboard/myproducts",
-        element: <Myproducts></Myproducts>
+        element:<PrivateRoute> <Myproducts></Myproducts></PrivateRoute>
       },
       {
         path: "/dashboard/update/:id",
-        element: <PrivateRoute><Update></Update></PrivateRoute>
+        element: <><Update></Update></>
       },
 
       {
@@ -90,23 +95,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/reported",
-        element: <Reported></Reported>
+        element: <Moderator><Reported></Reported></Moderator>
       },
          {
         path: "/dashboard/review",
-        element: <DataLoad><Review></Review></DataLoad>
+        element: <Moderator><Review></Review></Moderator>
       },
          {
         path: "/dashboard/statistics",
-        element: <DataLoad><Statistics></Statistics></DataLoad>
+        element: <PrivateRoute><Admin><Statistics></Statistics></Admin></PrivateRoute>
       },
          {
         path: "/dashboard/manageUser",
-        element: <DataLoad><ManageUser></ManageUser></DataLoad>
+        element: <Admin><ManageUser></ManageUser></Admin>
       },
          {
         path: "/dashboard/coupons",
-        element: <DataLoad><Coupons></Coupons></DataLoad>
+        element: <Admin><Coupons></Coupons></Admin>
       },
 
     ]
