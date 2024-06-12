@@ -3,7 +3,7 @@ import React from 'react';
 import Contex from '../Authentication/Contex';
 import Swal from 'sweetalert2';
 
-const Review1 = ({id}) => {
+const Review1 = ({id,setDepp,depp}) => {
     const {user}=Contex()
 const ids=id
     const handleSubmit=e=>{
@@ -24,6 +24,8 @@ const ids=id
                 showConfirmButton: false,
                 timer: 1500
               });
+setDepp(!depp)
+
         })
     }
     return (

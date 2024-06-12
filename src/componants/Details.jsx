@@ -74,15 +74,16 @@ const Details = () => {
     const Datee = new Date(date).toLocaleString()
     // const [rev,,reRev]=allReview()
     const [dd, setDD] = useState()
+    const [depp,setDepp]=useState()
     useEffect(() => {
         fetch('https://b9a12-server-side-safwan169.vercel.app/vvv')
             .then(res => res.json())
             .then(data => setDD(data))
-    }, [])
+    }, [depp])
     // const ddd=dd.filter(d=>d.id==_id)
     const datas = dd?.filter(d => d.id == id)
     // console.log('da',rev,)
-    console.log(dd, datas)
+    // console.log(dd, datas)
     return (
         <>
             <div className='z-10'>
@@ -194,7 +195,7 @@ const Details = () => {
 
                 <Heading text={"Review "}></Heading>
                 <div className='w-full flex justify-center my-10'>
-                    <Review1 id={id}></Review1>
+                    <Review1 setDepp={setDepp} depp={depp} id={id}></Review1>
 
 
 
