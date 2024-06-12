@@ -5,7 +5,7 @@ const Featured = () => {
     const { refetch:refetch1, data: featured = [],isLoading} = useQuery({
         queryKey: ['featured', ],
         queryFn: async() => {
-            const res = await axios.get(`http://localhost:5000/fetured`);
+            const res = await axios.get(`https://b9a12-server-side-safwan169.vercel.app/fetured`);
             return res.data;
         }
     })

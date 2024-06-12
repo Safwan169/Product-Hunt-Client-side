@@ -36,7 +36,7 @@ const Review = () => {
 
   // featured function
   const handleFetured = data => {
-    axios.post(`http://localhost:5000/fetured`, data)
+    axios.post(`https://b9a12-server-side-safwan169.vercel.app/fetured`, data)
 
       .then(res => {
         Swal.fire({
@@ -60,7 +60,7 @@ const Review = () => {
   const handleAcepted = id => {
     const text = "Accepted"
     const dd = { text }
-    axios.put(`http://localhost:5000/status/${id}`, dd)
+    axios.put(`https://b9a12-server-side-safwan169.vercel.app/status/${id}`, dd)
       .then(res => {
         Swal.fire({
           position: "top-end",
@@ -92,7 +92,7 @@ const Review = () => {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        axios.put(`http://localhost:5000/status/${id}`, dd)
+        axios.put(`https://b9a12-server-side-safwan169.vercel.app/status/${id}`, dd)
           .then(res => {
 
 

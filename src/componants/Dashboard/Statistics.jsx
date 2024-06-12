@@ -25,7 +25,7 @@ const Statistics = () => {
 
     const [dd, setDD] = useState()
     useEffect(() => {
-        fetch('http://localhost:5000/vvv')
+        fetch('https://b9a12-server-side-safwan169.vercel.app/vvv')
             .then(res => res.json())
             .then(data => setDD(data))
     }, [])

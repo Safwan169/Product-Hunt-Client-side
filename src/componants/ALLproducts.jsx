@@ -29,7 +29,7 @@ const ALLproducts = () => {
         const tag = e.target.search.value;
         const dd = { tag }
         // console.log(data)
-        axios.post(`http://localhost:5000/alldataTags`, dd)
+        axios.post(`https://b9a12-server-side-safwan169.vercel.app/alldataTags`, dd)
             .then(res => {
                 setAll(res.data.slice(0, 6))
 
@@ -45,7 +45,7 @@ const ALLproducts = () => {
 
 
 
-        // axios.get('http://localhost:5000/alldataTags',dd)
+        // axios.get('https://b9a12-server-side-safwan169.vercel.app/alldataTags',dd)
         // .then(res=>{
         //     console.log(res.data)
         // })

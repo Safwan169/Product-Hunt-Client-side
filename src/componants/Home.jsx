@@ -8,6 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 import { data } from 'autoprefixer';
 import Alldata from './Alldata';
 import Featured from './Featured';
+import ShowCoupons from './Dashboard/ShowCoupons';
 
 const Home = () => {
 
@@ -36,6 +37,9 @@ const Home = () => {
                 <Link className='text-center btn-primary btn mt-3 ' to={'/products'}>All Products</Link>
 
             </button>
+            <Heading text={"Coupons"}></Heading>
+
+            <ShowCoupons></ShowCoupons>
         </div>
     );
 };

@@ -19,7 +19,7 @@ const ManageUser = () => {
     const dd = { data }
     console.log(dd)
 
-        axios.put(`http://localhost:5000/roleChanged/${id}`,dd)
+        axios.put(`https://b9a12-server-side-safwan169.vercel.app/roleChanged/${id}`,dd)
         .then(res=>{
             refetchUser()
             setDep(!dep)
@@ -48,7 +48,7 @@ const ManageUser = () => {
       {
         user3?.map((data, index) => <tbody> <tr className=''>
           <th>{index + 1}</th>
-          <td className='font-bold ' >{data.name}</td>
+          <td className='font-bold ' >{data?.name}</td>
           <td className='font-bold text-red-500'>{data.email}</td>
           <td className='font-bold text-blue-500'>{data.status}</td>
           <td className=' flex gap-5'>

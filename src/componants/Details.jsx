@@ -33,13 +33,13 @@ const Details = () => {
     const id = useParams().id
     const [cart, refetch, isLoading] = Alldata()
 
-    // useEffect(()=>{fetch(`http://localhost:5000/alldata/${id}`
+    // useEffect(()=>{fetch(`https://b9a12-server-side-safwan169.vercel.app/alldata/${id}`
     //     .then(res=>res.json())
     //     .then(data=>console.log(data))
     // ),[dep]})
     // const [productNames, setProductName] = useState('');
 
-    // const dd = axios.get(`http://localhost:5000/alldata`).data
+    // const dd = axios.get(`https://b9a12-server-side-safwan169.vercel.app/alldata`).data
 
 
 
@@ -53,7 +53,7 @@ const Details = () => {
             name: productName,
             id: _id
         }
-        axios.post(`http://localhost:5000/report`, data)
+        axios.post(`https://b9a12-server-side-safwan169.vercel.app/report`, data)
             .then(res => {
                 Swal.fire({
                     position: "top-end",
@@ -75,7 +75,7 @@ const Details = () => {
     // const [rev,,reRev]=allReview()
     const [dd, setDD] = useState()
     useEffect(() => {
-        fetch('http://localhost:5000/vvv')
+        fetch('https://b9a12-server-side-safwan169.vercel.app/vvv')
             .then(res => res.json())
             .then(data => setDD(data))
     }, [])

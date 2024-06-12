@@ -41,19 +41,20 @@ const Authentication = ({ children }) => {
                 // console.log(user.displayName)
 
                 // jwt 
-                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                axios.post('https://b9a12-server-side-safwan169.vercel.app/jwt', user, { withCredentials: true })
                 .then(res => {
                     console.log('token response', res.data);
                 })
+                console.log('here',user.displayName)
 
                 const data={
                     email:user.email,
-                    name: user?.displayName,
+                    name: user.displayName,
                     status:'User',
             
                 }
-            // loader:({params})=>fetch(`http://localhost:5000/alldata/${params.id}`),
-                axios.post(` http://localhost:5000/user/${user.email}`, data)
+            // // loader:({params})=>fetch(`https://b9a12-server-side-safwan169.vercel.app/alldata/${params.id}`),
+                axios.post(` https://b9a12-server-side-safwan169.vercel.app/user/${user.email}`, data)
                 .then(res => {
                     console.log('nowdata', res.data);
                     // setUserData(res.data)
@@ -64,7 +65,7 @@ const Authentication = ({ children }) => {
 
                 
                 
-                useEffect(()=>{axios.get(` http://localhost:5000/user/${user.email}`, data)
+                useEffect(()=>{axios.get(` https://b9a12-server-side-safwan169.vercel.app/user/${user.email}`, data)
                 .then(res => {
                     console.log('nowdata', res.data);
                     setUserData(res.data)
@@ -78,7 +79,7 @@ const Authentication = ({ children }) => {
 
                 setUser(false)
 
-                axios.post('http://localhost:5000/logout', user, {
+                axios.post('https://b9a12-server-side-safwan169.vercel.app/logout', user, {
                     withCredentials: true
                 })
                     .then(res => {

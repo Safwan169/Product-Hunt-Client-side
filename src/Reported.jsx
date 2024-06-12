@@ -25,7 +25,7 @@ const Reported = () => {
           }).then((result) => {
             if (result.isConfirmed) {
       
-                axios.delete(`http://localhost:5000/reportdel/${id}`)
+                axios.delete(`https://b9a12-server-side-safwan169.vercel.app/reportdel/${id}`)
                 .then(res => {
       
       

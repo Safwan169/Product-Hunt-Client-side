@@ -7,7 +7,7 @@ const allReview = () => {
     const { refetch: reRev, data: rev =[],isLoading:isload} = useQuery({
         queryKey: ['rev', ],
         queryFn: async() => {
-            const res = await axios.get(`http://localhost:5000/vvv`);
+            const res = await axios.get(`https://b9a12-server-side-safwan169.vercel.app/vvv`);
             return res.data;
         }
     })

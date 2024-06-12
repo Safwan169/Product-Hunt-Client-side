@@ -29,6 +29,8 @@ import ManageUser from "./componants/Dashboard/ManageUser";
 import Coupons from "./componants/Dashboard/Coupons";
 import Admin from "./componants/Admin";
 import Moderator from "./componants/Moderator";
+import AddCoupons from "./componants/AddCoupons";
+import UpdateCoupons from "./componants/Dashboard/UpdateCoupons";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +42,7 @@ const router = createBrowserRouter([
       {
         path: '/',
          
-        // loader:()=>fetch('http://localhost:5000/alldata'),
+        // loader:()=>fetch('https://b9a12-server-side-safwan169.vercel.app/alldata'),
 
         element: <Home></Home>
       },
@@ -62,7 +64,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/details/:id',
-        // loader:({params})=>fetch(`http://localhost:5000/alldata/${params.id}`),
+        // loader:({params})=>fetch(`https://b9a12-server-side-safwan169.vercel.app/alldata/${params.id}`),
 
         element:<PrivateRoute><DataLoad><Details></Details></DataLoad></PrivateRoute>
       },
@@ -112,6 +114,14 @@ const router = createBrowserRouter([
          {
         path: "/dashboard/coupons",
         element: <Admin><Coupons></Coupons></Admin>
+      },
+         {
+        path: "/dashboard/addCoupons",
+        element: <Admin><AddCoupons></AddCoupons></Admin>
+      },
+         {
+        path: "/dashboard/updateCoupons/:id",
+        element: <><UpdateCoupons></UpdateCoupons></>
       },
 
     ]

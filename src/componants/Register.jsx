@@ -23,7 +23,7 @@ const Register = () => {
         const email = e.target.email.value
         const password = e.target.password.value
         const photoURL = e.target.photoURL.value
-
+console.log(name)
         setOkk('')
         setOk('')
 

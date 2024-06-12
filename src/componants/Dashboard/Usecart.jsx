@@ -9,7 +9,7 @@ const UseCart = () => {
     const { refetch, data: cart = [] } = useQuery({
         queryKey: ['cart', user?.email],
         queryFn: async() => {
-            const res = await axios.get(`http://localhost:5000/myData/${user.email}`,{ withCredentials: true });
+            const res = await axios.get(`https://b9a12-server-side-safwan169.vercel.app/myData/${user.email}`,{ withCredentials: true });
             return res.data;
         }
     })

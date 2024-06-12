@@ -49,7 +49,7 @@ const From = () => {
       console.log((new Date(date)).toLocaleString())
       // console.log(date)
   
-        axios.post('http://localhost:5000/add',data)
+        axios.post('https://b9a12-server-side-safwan169.vercel.app/add',data)
         .then(res=>{
           // console.log(res.data.insertedId)
           if(res.data.insertedId){

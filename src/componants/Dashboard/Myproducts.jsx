@@ -24,7 +24,7 @@ const handleDelete = id=>{
         confirmButtonText: "Yes, delete it!"
       }).then((result) => {
         if (result.isConfirmed) {
-            axios.delete(`http://localhost:5000/delete/${id}`,{ withCredentials: true })
+            axios.delete(`https://b9a12-server-side-safwan169.vercel.app/delete/${id}`,{ withCredentials: true })
             .then(res=>{
                console.log(res.data)
                if (res.data.deletedCount) {

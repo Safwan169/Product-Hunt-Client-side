@@ -15,7 +15,7 @@ const ids=id
         const rate=e.target.rate.value
         const data={id,name,img,des,rate}
         console.log(data)
-        axios.post(`http://localhost:5000/rev`,data)
+        axios.post(`https://b9a12-server-side-safwan169.vercel.app/rev`,data)
         .then(res=>{
             Swal.fire({
                 position: "top-end",

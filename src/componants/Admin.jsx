@@ -13,7 +13,9 @@ const Admin = ({children}) => {
       return  children
         
     }
-    // else()
+    else if(isload){
+    return <span className="loading loading-ring absolute left-1/2 top-1/2 loading-lg"></span>
+  }
     
 };
 

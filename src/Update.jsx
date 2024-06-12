@@ -50,7 +50,7 @@ const Update = () => {
         // console.log((new Date(date)).toLocaleString())
         // console.log(date)
 
-        axios.put(`http://localhost:5000/update/${id}`, data,{ withCredentials: true })
+        axios.put(`https://b9a12-server-side-safwan169.vercel.app/update/${id}`, data,{ withCredentials: true })
             .then(res => {
                 console.log(res.data)
                 if (res.data.matchedCount) {
