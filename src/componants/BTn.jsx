@@ -15,7 +15,7 @@ const BTn = ({data,_id,vote }) => {
 
         if (user) {
 
-            axios.put(`https://b9a12-server-side-safwan169.vercel.app//vote/${id}`, user)
+            axios.put(`https://b9a12-server-side-safwan169.vercel.app/vote/${id}`, user)
                 .then(res => {
                     refetch()
                     refetch1()
@@ -34,7 +34,7 @@ const BTn = ({data,_id,vote }) => {
   
     const dd= data?.find(d=>d==user?.email)
     const handleVoteDelete=id=>{
-        axios.put(`https://b9a12-server-side-safwan169.vercel.app//voteDec/${id}`, user)
+        axios.put(`https://b9a12-server-side-safwan169.vercel.app/voteDec/${id}`, user)
         .then(res => {
             console.log(res.data)
             refetch()

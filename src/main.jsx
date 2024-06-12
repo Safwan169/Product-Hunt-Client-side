@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       {
         path: '/',
          
-        // loader:()=>fetch('https://b9a12-server-side-safwan169.vercel.app/alldata'),
+        // loader:()=>fetch('https://b9a12-server-side-safwan169.vercel.app//alldata'),
 
         element: <Home></Home>
       },
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/details/:id',
-        // loader:({params})=>fetch(`https://b9a12-server-side-safwan169.vercel.app/alldata/${params.id}`),
+        // loader:({params})=>fetch(`https://b9a12-server-side-safwan169.vercel.app//alldata/${params.id}`),
 
         element:<PrivateRoute><DataLoad><Details></Details></DataLoad></PrivateRoute>
       },

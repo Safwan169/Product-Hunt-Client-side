@@ -23,7 +23,7 @@ const Coupons = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-          axios.delete(`https://b9a12-server-side-safwan169.vercel.app/deleteCoupons/${id}`,{ withCredentials: true })
+          axios.delete(`http://localhost:5000/deleteCoupons/${id}`,{ withCredentials: true })
           .then(res=>{
              console.log(res.data)
              if (res.data.deletedCount) {

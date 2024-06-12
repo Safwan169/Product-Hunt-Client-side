@@ -18,7 +18,7 @@ const Myprofile = () => {
                     <div className='bg-white'>
                         <h2 className="text-2xl font-bold mb-4">{user?.displayName}</h2>
 
-                        <p className="text-gray-700 mb-4">Email: {user?.email}</p>
+                        <p className="text-gray-700 mb-4 font-bold">Email: {user?.email}</p>
                     </div>
                     {/* 
                     {!user.isSubscribed ? (

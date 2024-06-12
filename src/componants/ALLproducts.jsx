@@ -10,10 +10,11 @@ import { NavLink } from 'react-router-dom';
 const ALLproducts = () => {
     const { user } = Contex()
     const [cart, refetch] = Alldata()
+    const status=cart?.filter(d=>d.status=="Accepted")
 
-    const [All, setAll] = useState(cart.slice(0, 6))
+    const [All, setAll] = useState(status?.slice(0, 6))
 
-    const [sff, setSf] = useState(cart.length)
+    const [sff, setSf] = useState(status?.length)
     const dataa = Math.ceil(sff / 6)
     const sf2 = [...Array(dataa).keys()]
     const [peg, setPeg] = useState(sf2)
@@ -67,7 +68,7 @@ const ALLproducts = () => {
     const handleChange = index => {
         // console.log(index)
         // const dataa = [Math.ceil(All / `${index}`)]
-        const dd = cart.slice(index * 6, (index + 1) * 6)
+        const dd = status.slice(index * 6, (index + 1) * 6)
         setAll(dd)
         refetch()
 
