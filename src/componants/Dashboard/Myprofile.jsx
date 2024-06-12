@@ -3,6 +3,7 @@ import Contex from '../Authentication/Contex';
 
 const Myprofile = () => {
     const { user } = Contex()
+    // const [user3]
     return (
         <div>
             <img className='w-full' src="https://i.ibb.co/44vbK9G/profile.png" alt="" />
@@ -20,6 +21,8 @@ const Myprofile = () => {
 
                         <p className="text-gray-700 mb-4 font-bold">Email: {user?.email}</p>
                     </div>
+
+                    <p></p>
                     {/* 
                     {!user.isSubscribed ? (
                         <button className="bg-green-500 text-white py-2 px-4 rounded">

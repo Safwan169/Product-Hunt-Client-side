@@ -51,26 +51,26 @@ const AddCoupons = () => {
                 <span className='font-bold'>Coupon Code</span>
             </div>
 
-                <input type="number" name='code' placeholder="Coupon Code" className="input input-bordered w-full " />
+                <input type="text" name='code' required placeholder="Coupon Code" className="input input-bordered w-full " />
                 <div className='mt-5 mb-2'>
                 <span className='font-bold'>Discount Amount</span>
             </div>
 
-                <input type="number" name='amount' placeholder="Discount Amount" className="input input-bordered w-full " />
+                <input type="number" name='amount' required placeholder="Discount Amount" className="input input-bordered w-full " />
 
 
                 <div className='mt-5 mb-2'>
                 <span className='font-bold'>Expiry Date</span>
             </div>
 
-                <input type="date" name='date' placeholder="Expiry Date" className="input input-bordered w-full " />
+                <input type="date" name='date' required placeholder="Expiry Date" className="input input-bordered w-full " />
 
 
             <label className="form-control">
                <div className="label">
                     <span  className="label-text font-bold">Description</span>
                 </div>
-                <textarea name='description' className="textarea textarea-bordered h-24" placeholder="Write something about it .."></textarea>
+                <textarea name='description' className="textarea textarea-bordered h-24" required placeholder="Write something about it .."></textarea>
 
             </label>
                 <button className='mt-10 btn w-full font-bold text-xl btn-primary'> submit</button>

@@ -8,10 +8,13 @@ const Drawar = () => {
     // const {UserData} = Contex()
     const { user } = Contex()
     const [user2, refetchUser,] = alUser()
+    // console.log(user2)
     const data = user2.find((d) => d.email == user.email)
     // console.log(user2 ,data,UserData,)
     // console.log(data)
-
+// const Verified=user2?.find(d=>d?.email==user?.email)
+// const yesverified=Verified?.Verified=='subscribe'
+// console.log(yesverified)
 
 
 
@@ -64,9 +67,9 @@ const Drawar = () => {
                     </> : <>{data?.status == 'Moderator' ? <>
                         {/* for moderator */}
                         {/* <Link to={'/dashboard'}><a>My Profile</a></Link> */}
-                        <NavLink to={'/dashboard'} className={({ isActive }) =>
+                        {/* <NavLink to={'/dashboard'} className={({ isActive }) =>
                             isActive ? ' border-b-2 my-3 ml-0 px-3 rounded-xl bg-black text-white border-blue-600  py-3  transition duration-300 ease-in-out ' : "font-bold my-3 block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover: dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"} >
-                            MY Profile</NavLink>
+                            MY Profile</NavLink> */}
                         <NavLink to={'/dashboard/review'} className={({ isActive }) =>
                             isActive ? ' border-b-2 my-3 ml-0 px-3 rounded-xl bg-black text-white border-blue-600  py-3  transition duration-300 ease-in-out ' : "font-bold my-3 block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover: dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"} >
                             Product Review Queue</NavLink>
@@ -86,9 +89,9 @@ const Drawar = () => {
 
 
                                 {/* <Link to={'/dashboard'}><a>My Profile</a></Link> */}
-                                <NavLink to={'/dashboard'} className={({ isActive }) =>
+                                {/* <NavLink to={'/dashboard'} className={({ isActive }) =>
                                     isActive ? ' border-b-2 my-3 ml-0 px-3 rounded-xl bg-black text-white border-blue-600  py-3  transition duration-300 ease-in-out ' : "font-bold my-3 block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover: dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"} >
-                                    MY Profile</NavLink>
+                                    MY Profile</NavLink> */}
 
 
                                 {/* <Link to={'/dashboard/statistics'}><a> Statistics</a></Link> */}
