@@ -53,17 +53,17 @@ const ShowCoupons = () => {
                     clickable: true,
                 }}
                 modules={[Pagination]}
-                className="mySwiper h-[150px]">
+                className="mySwiper md:h-[300px] h-[520px] lg:h-[300px]">
                 {/* <Swiper watchSlidesProgress={true} slidesPerView={3} className="mySwiper "> */}
 
-                {coupons?.map(d => <SwiperSlide className='400 '>
+                {coupons?.map(d => <SwiperSlide className=' '>
 
 
                     <div className='border flex flex-col  lg:flex-row border-green-500 rounded-xl mx-auto p-5 w-1/2'>
 
 
 
-                        <p className="font-bold text-gray-600 w-1/3 mt-2 border-r-2 mr-5 pr-7 border-dashed border-green-500">
+                        <p className="font-bold text-gray-600 md:w-1/3 md:border-r-2 w-full border-b-2 md:border-b-0 lg:border-b-0 lg:w-1/3 mt-2 lg:border-r-2 md:mr-5  mb-5 lg:mb-0 pb-5 lg:pb-0 md:pb-0 md:mb-0 lg:mr-5 md:pr-7 lg:pr-7 border-dashed border-green-500">
                             Use code <span className="font-bold  text-green-500">{d.code}</span> to get {d.amount } off OuR Membership  purchase.
                         </p>
 

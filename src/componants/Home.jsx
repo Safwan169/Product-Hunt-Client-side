@@ -14,7 +14,7 @@ const Home = () => {
 
     // const alldata=useLoaderData()
     const [cart] = Alldata()
-    const [featured]=Featured()
+    const [featured] = Featured()
     const data = featured?.sort((a, b) => (b.date - a.date))
     const lastData = data?.slice(0, 4)
     // console.log(vote)
@@ -28,8 +28,8 @@ const Home = () => {
             {lastData?.map(d => <Feretured data={d}></Feretured>)}
 
             <div className='lg:mt-20 md:lg:mt-20 mt-10'>
-            <Heading text={"Trending Products"}></Heading>
-           
+                <Heading text={"Trending Products"}></Heading>
+
                 {vote.map(d => <Feretured data={d}></Feretured>)}
 
             </div>
@@ -37,8 +37,10 @@ const Home = () => {
                 <Link className='text-center btn-primary btn mt-3 ' to={'/products'}>All Products</Link>
 
             </button>
+            <div className='my-10'>
             <Heading text={"Coupons"}></Heading>
 
+            </div>
             <ShowCoupons></ShowCoupons>
         </div>
     );
