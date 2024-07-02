@@ -27,20 +27,16 @@ Our Product Hunt platform empowers users to share and discover innovative produc
 
 * Standard Users: Share one product with the community.
 * Premium Members: Unlock the ability to add unlimited products, expanding your reach and impact.
+
  2. Role-Based Management
 
 * Administrators: Oversee user activities, manage roles, and ensure a smooth experience for all.
 * Moderators: Feature standout products, curate the homepage, and maintain a high-quality product catalog by handling reports and      removing inappropriate items.
 
-3. Engagement and Feedback
-
-* Interactive Elements: Users can like, dislike, review, and report products, fostering a dynamic and responsive community environment.
-* Review System: Provide valuable feedback on products, helping creators improve and users make informed decisions.
 
 4. Membership Advantages
 
 * Enhanced Visibility: Premium membership grants unlimited product submissions, increasing exposure and opportunities for engagement.
-* Exclusive Features: Access premium tools and benefits designed to boost your product's success on our platform.
 
 5. Comprehensive Admin and Moderator Tools
 
@@ -55,15 +51,19 @@ We welcome contributions from the community! Whether you're fixing bugs, adding 
 * Create a Branch: Work on your feature or bug fix in a dedicated branch.
 * Submit a Pull Request: Share your changes with the community for review.
 
+# Running Locally
+
+Follow these steps to clone and run the project locally:
+ 
+* use git clone on cmd and use clone link 
+* use npm run dev
+
 # Get in Touch
 
 Interested in collaborating or learning more about our platform? Feel free to reach out! We're always looking for passionate individuals to join our team and help grow our community.
 
 Email: safwanhossainmridul@gmail.com
 
-# Acknowledgements
-
-Thank you to all our contributors and users for making this platform a thriving community for product discovery and innovation.
 
 
 
