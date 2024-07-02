@@ -11,8 +11,15 @@ const ALLproducts = () => {
     const { user } = Contex()
     const [cart, refetch] = Alldata()
     const status=cart?.filter(d=>d.status=="Accepted")
-
     const [All, setAll] = useState(status?.slice(0, 6))
+
+
+useEffect(()=>{
+setAll(status?.slice(0,6))},[cart]
+
+
+)
+    console.log(status)
 
     const [sff, setSf] = useState(status?.length)
     const dataa = Math.ceil(sff / 6)
@@ -109,7 +116,8 @@ const ALLproducts = () => {
                 {peg.map((d, index) =>
 
                     <NavLink className={({ isActive }) =>
-                        isActive ? 'text-blue-500 border-b-2 border-blue-600  py-3  transition duration-300 ease-in-out ' : "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"}>                <input onClick={() => handleChange(index + 0)} className="join-item btn btn-square" type="radio" name="options" aria-label={`${index + 1}`} />
+                        isActive ? 'text-blue-500 border-b-2 border-blue-600  py-3  transition duration-300 ease-in-out ' : "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"}>       
+                                 <input onClick={() => handleChange(index + 0)} className="join-item btn btn-square" type="radio" name="options" aria-label={`${index + 1}`} />
                     </NavLink>
                 )
                 }

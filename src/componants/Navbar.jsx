@@ -5,6 +5,7 @@ import Contex from './Authentication/Contex';
 import { auth } from '../../firebase.config';
 import Swal from 'sweetalert2';
 import { signOut } from 'firebase/auth';
+import alUser from './Dashboard/alUser';
 
 const Navbar = () => {
     const handleLogout = () => {
@@ -24,7 +25,13 @@ const Navbar = () => {
     }
     const [yes, setYes] = useState(false)
     const [yes2, setYes2] = useState(false)
-    const { user } = Contex()
+    const { user,UserData} = Contex()
+    // const [user2]=alUser()
+    // const statusS=user2?.filter(d=>d.email==user.email)
+    // const dd=
+    console.log(UserData?.status,'ASDFAS',UserData)
+
+
     const all = <>
 
         <li>
@@ -99,7 +106,9 @@ const Navbar = () => {
                 {
                     yes2 && <div className='flex-col flex p-5 rounded-2xl z-20  bg-slate-200 border border-gray-300 gap-3  font-bold'>
                         <p className='text-xs font-black'>{user.displayName}</p>
-                        <Link className='hover:underline hover:text-purple-500' to={'/dashboard'}>Dashboard</Link>
+                        {
+                            UserData?.status== "Admin"?<Link to={'/dashboard/statistics'} className=' my-1 font-bold'>Dashboard</Link>:UserData?.status =="Moderator"?<Link className='font-bold my-1' to={'/dashboard/review'}>Dashboard</Link>:<Link className='my-1 font-bold' to={'/dashboard/myprofile'}>  Dashboard</Link>}
+                        
                         <Link onClick={handleLogout} className='btn w-[100px] bg-red-400  text-white font-bold rounded-2xl' >Sign Out</Link>
                     </div>
                 }

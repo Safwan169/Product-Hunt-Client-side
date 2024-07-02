@@ -6,10 +6,13 @@ import Heading from './Heading';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import AddorNot from './AddorNot';
 
 
 const Myproducts = () => {
 const [cart,refetch]=UseCart()
+const [,refetchYesOrNot]=AddorNot()
+
 const handleDelete = id=>{
   
 
@@ -40,6 +43,7 @@ const handleDelete = id=>{
                }
         
                 refetch()
+                refetchYesOrNot()
             })
          
         }

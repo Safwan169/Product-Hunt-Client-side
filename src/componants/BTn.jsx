@@ -4,6 +4,8 @@ import axios from 'axios';
 import Alldata from './Alldata';
 import { useNavigate } from 'react-router-dom';
 import Featured from './Featured';
+import { AiFillLike } from "react-icons/ai";
+
 
 const BTn = ({data,_id,vote }) => {
     const {user,loading}=Contex()
@@ -45,7 +47,8 @@ const BTn = ({data,_id,vote }) => {
     }
     return (
         <div>
-            {loading ? <span className="loading loading-ring loading-md"></span> :<>{dd?<button onClick={() => handleVoteDelete(_id)} className={`btn disabled bg-slate-300 text-black`}>{vote}</button> : <button onClick={() => handleVote(_id)} className="btn btn-primary">{vote}</button>}</>}
+            {loading ? <span className="loading loading-ring loading-md"></span> :<>{dd?<button onClick={() => handleVoteDelete(_id)} className={`btn disabled  text-black`}> <span className=' text-blue-500'><AiFillLike size={25} />
+            </span> {vote}</button> : <button onClick={() => handleVote(_id)} className="btn "> <span className='text-gray-400'><AiFillLike size={25} /></span> {vote}</button>}</>}
         
         </div>
     );

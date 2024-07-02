@@ -4,10 +4,13 @@ import Contex from '../Authentication/Contex';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Navigate, useNavigate } from 'react-router-dom';
+import AddorNot from './AddorNot';
 
 const From = () => {
     const navigate =useNavigate()
     const { user } = Contex()
+    const [,refetchYesOrNot]=AddorNot()
+
     console.log(user.displayName)
     const {displayName,email,photoURL}=user
     // const { ownerName, ownerImage, ownerEmail } = useContext(ProductOwnerContext);
@@ -66,6 +69,7 @@ const From = () => {
             setTags([])
             setExternalLinks('')
             navigate('/dashboard/myproducts')
+            refetchYesOrNot()
             
   
   

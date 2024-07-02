@@ -3,6 +3,9 @@ import { FiAlignJustify } from 'react-icons/fi';
 import { Link, NavLink } from 'react-router-dom';
 import alUser from './alUser';
 import Contex from '../Authentication/Contex';
+import Alldata from '../Alldata';
+import SpecificUser from './SpecificUser';
+import AddorNot from './AddorNot';
 
 const Drawar = () => {
     // const {UserData} = Contex()
@@ -12,9 +15,17 @@ const Drawar = () => {
     const data = user2.find((d) => d.email == user.email)
     // console.log(user2 ,data,UserData,)
     // console.log(data)
-// const Verified=user2?.find(d=>d?.email==user?.email)
-// const yesverified=Verified?.Verified=='subscribe'
-// console.log(yesverified)
+    // const Verified = user2?.find(d => d?.email == user?.email)
+    // const yesverified = Verified?.Verified == 'subscribe'
+    // console.log(yesverified)
+
+    // const [cart] = Alldata()
+    // const yes = cart?.find(d => d?.email == user?.email)
+    // console.log(yes)
+    const [specificUser]=SpecificUser()
+    const [YesOrNOt]=AddorNot()
+    console.log(YesOrNOt)
+
 
 
 
@@ -37,25 +48,25 @@ const Drawar = () => {
                     {/* Sidebar content here */}
                     {/* <Link to={'/'}><a>Home</a></Link> */}
                     <NavLink to={'/'} className={({ isActive }) =>
-                            isActive ? ' border-b-2 my-3 ml-0 px-3 rounded-xl bg-black text-white border-blue-600  py-3  transition duration-300 ease-in-out ' : "font-bold my-3 block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover: dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"} >
-                             Home</NavLink>
+                        isActive ? ' border-b-2 my-3 ml-0 px-3 rounded-xl bg-black text-white border-blue-600  py-3  transition duration-300 ease-in-out ' : "font-bold my-3 block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover: dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"} >
+                        Home</NavLink>
 
                     {/* <Link to={'/products'} ><a> Products</a></Link> */}
 
                     <NavLink to={'/products'} className={({ isActive }) =>
-                            isActive ? ' border-b-2 my-3 ml-0 px-3 rounded-xl bg-black text-white border-blue-600  py-3  transition duration-300 ease-in-out ' : "font-bold my-3 block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover: dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"} >
-                             Products</NavLink>
+                        isActive ? ' border-b-2 my-3 ml-0 px-3 rounded-xl bg-black text-white border-blue-600  py-3  transition duration-300 ease-in-out ' : "font-bold my-3 block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover: dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"} >
+                        Products</NavLink>
 
 
                     <div className="divider"></div>
 
                     {data?.status == 'User' ? <>
-                        <NavLink to={'/dashboard'} className={({ isActive }) =>
+                        <NavLink to={'/dashboard/myprofile'} className={({ isActive }) =>
                             isActive ? ' border-b-2 my-3 ml-0 px-3 rounded-xl bg-black text-white border-blue-600  py-3  transition duration-300 ease-in-out ' : "font-bold my-3 block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover: dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"} >
                             MY Profile</NavLink>
-                        <NavLink to={'addproducts'} className={({ isActive }) =>
+                        {YesOrNOt =="no" || specificUser?.membership == "verified" ?<NavLink to={'addproducts'} className={({ isActive }) =>
                             isActive ? ' border-b-2 my-3 ml-0 px-3 rounded-xl bg-black text-white border-blue-600  py-3  transition duration-300 ease-in-out ' : "font-bold my-3 block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover: dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"} >
-                            Add Products</NavLink>
+                            Add Products</NavLink>:''}
                         {/* <Link to={'addproducts'} ><a>Add Products</a></Link> */}
 
                         <NavLink to={'/dashboard/myproducts'} className={({ isActive }) =>
