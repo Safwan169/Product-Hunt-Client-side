@@ -26,7 +26,7 @@ const BTn = ({ data, _id, vote }) => {
                 .then(res => {
                     refetch()
                     refetch1()
-                    // setVoteData(vote=1)
+                    setVoteData(vote+1)
 
 
                 })
@@ -52,6 +52,7 @@ const BTn = ({ data, _id, vote }) => {
                 refetch()
                 refetch1()
                 // setVoteData(vote-1)
+                setVoteData(vote-1)
 
 
 
@@ -59,7 +60,7 @@ const BTn = ({ data, _id, vote }) => {
     }
     return (
         <div>
-            {loading ? <span className="loading loading-ring loading-md"></span> : <>{voteController ? <button onClick={() => handleVoteDelete(_id)} className={`btn disabled  text-black`}> <span className=' text-blue-500'><AiFillLike size={25} />
+            {loading ? <span className="loading loading-ring loading-md"></span> : <>{voteController||dd ? <button onClick={() => handleVoteDelete(_id)} className={`btn disabled  text-black`}> <span className=' text-blue-500'><AiFillLike size={25} />
             </span> {voteData}</button> : <button onClick={() => handleVote(_id)} className="btn "> <span className='text-gray-400'><AiFillLike size={25} /></span> {voteData}</button>}</>}
 
         </div>

@@ -21,15 +21,18 @@ const Home = () => {
 
 
     return (
-        <div className=''>
+        <div className='space-y-16'>
             <div className='md:h-[400px] lg:h-[700px]  '>
             <Banner></Banner>
             </div>
             <Heading text={"Featured Products"}></Heading>
             {lastData?.map(d => <Feretured data={d}></Feretured>)}
 
-            <div className='my-10'>
+
+
             <Heading text={"Coupons"}></Heading>
+            <div className='my-10'>
+            
 
             <ShowCoupons></ShowCoupons>
             </div>

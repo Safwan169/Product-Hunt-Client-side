@@ -24,12 +24,7 @@ const Footer = () => {
 
                         <Link href="/">
 
-                            {/* <Image className=' w-20  mx-auto lg:mx-0 md:mx-0'
-                                src="https://i.ibb.co.com/MP6sd6v/logo-02.png"
-                                alt="QuickBite"
-                                height={100}
-                                width={100}
-                            /> */}
+                          
 
                             <img src="https://i.ibb.co.com/Z1qkm9Y/logo-removebg-preview.png" alt="Product Hunt" />
                         </Link>

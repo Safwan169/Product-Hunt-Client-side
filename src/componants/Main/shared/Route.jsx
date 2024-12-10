@@ -6,8 +6,8 @@ import Navbar from "../../Home/shared/Navbar";
 const Route = () => {
   return (
     <>
-      <div className="lg:px-48">
-        <Navbar></Navbar>
+      <Navbar></Navbar>
+      <div className="xl:px-48">
         <Outlet></Outlet>
       </div>
       <Footer></Footer>
