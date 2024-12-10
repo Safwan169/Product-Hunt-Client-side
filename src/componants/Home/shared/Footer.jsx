@@ -26,7 +26,7 @@ const Footer = () => {
 
                           
 
-                            <img src="https://i.ibb.co.com/Z1qkm9Y/logo-removebg-preview.png" alt="Product Hunt" />
+                            <img className='h-36 sm:h-40' src="https://i.ibb.co.com/Z1qkm9Y/logo-removebg-preview.png" alt="Product Hunt" />
                         </Link>
 
 

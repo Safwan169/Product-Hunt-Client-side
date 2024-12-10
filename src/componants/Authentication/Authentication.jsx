@@ -11,7 +11,7 @@ import { auth } from "../../../firebase.config";
 export const myContext = createContext(null);
 
 const Authentication = ({ children }) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState();
   const [dep, setDep] = useState(false);
   const [dep2, setDep2] = useState(false);
@@ -35,8 +35,9 @@ const Authentication = ({ children }) => {
   };
   useEffect(
     () => {
-      //
+      setLoading(true)
       const unSubscribe = onAuthStateChanged(auth, (user) => {
+
         if (user) {
           // console.log(user.displayName)
 
@@ -84,6 +85,7 @@ const Authentication = ({ children }) => {
         } else {
           // User is signed out
           // ...
+          setLoading(false);
 
           setUser(false);
 

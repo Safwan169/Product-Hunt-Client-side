@@ -25,15 +25,12 @@ const Navbar = () => {
                     showConfirmButton: false,
                     timer: 2000
                 });
-                setYes(false)
 
-                setYes2(!yes2)
             })
     }
-    const [yes, setYes] = useState(false)
-    const [yes2, setYes2] = useState(false)
-    const { user,UserData} = Contex()
 
+    const { user,UserData} = Contex()
+console.log(user,'This is the user')
   
 
     const normalLink =
@@ -139,15 +136,15 @@ const Navbar = () => {
                     className="dropdown-content absolute  gap-1  -right-5 lg:-right-10 h-fit  menu bg-base-100 rounded-md z-[1] w-32 p-2 shadow"
                   >
                     <h1 className="text-center">Hi {user?.displayName}</h1>
-                    <li className=" hover:bg-gray-300 hover:rounded-lg">
-                      <Link to="">
+                    {/* <li className=" hover:bg-gray-300 hover:rounded-lg">
+                      <Link to="/dashboard/myprofile">
                         Profile
                       </Link>
-                    </li>
+                    </li> */}
 
                  
                     <li className=" hover:bg-gray-300 hover:rounded-lg">
-                      <Link to="/dashboard/myprofile">
+                      <Link to="/dashboard">
                         Dashboard
                       </Link>
                     </li>

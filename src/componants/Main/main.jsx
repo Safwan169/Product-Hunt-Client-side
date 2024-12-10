@@ -31,12 +31,13 @@ import Error from "../Error/Error";
 import Home from "../Home/Home";
 import Login from "../Authentication/Login & Register/Login";
 import Register from "../Authentication/Login & Register/Register";
+import RoleBasedFirstPage from "../Dashboard/Main/shared/RoleBasedFirstPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Route ></Route>,
-    errorElement: <Error></Error>,
+    element: <Route />,
+    errorElement: <Error/>,
 
     children: [
       {
@@ -44,12 +45,12 @@ const router = createBrowserRouter([
          
         // loader:()=>fetch('https://b9a12-server-side-safwan169.vercel.app//alldata'),
 
-        element: <Home></Home>
+        element: <Home/>
       },
       {
         path: '/products',
 
-        element: <DataLoad><ALLproducts></ALLproducts></DataLoad>
+        element: <DataLoad><ALLproducts/></DataLoad>
       },
       {
         path: '/login',
@@ -60,31 +61,34 @@ const router = createBrowserRouter([
       {
         path: '/register',
 
-        element: <Register></Register>
+        element: <Register/>
       },
       {
         path:'/details/:id',
-        // loader:({params})=>fetch(`https://b9a12-server-side-safwan169.vercel.app//alldata/${params.id}`),
 
-        element:<PrivateRoute><DataLoad><Details></Details></DataLoad></PrivateRoute>
+        element:<PrivateRoute><DataLoad><Details/></DataLoad></PrivateRoute>
       },
     ]
 
   },
   {
     path: "/dashboard",
-    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-    errorElement: <Error></Error>,
+    element: <PrivateRoute><Dashboard/></PrivateRoute>,
+    errorElement: <Error/>,
 
     children: [
       {
+        path: "/dashboard",
+        element: <PrivateRoute><RoleBasedFirstPage/></PrivateRoute>
+      },
+      {
         path: "/dashboard/myprofile",
-        element: <PrivateRoute><Myprofile></Myprofile></PrivateRoute>
+        element: <PrivateRoute><Myprofile/></PrivateRoute>
       },
 
       {
         path: "/dashboard/myproducts",
-        element:<PrivateRoute> <Myproducts></Myproducts></PrivateRoute>
+        element:<PrivateRoute> <Myproducts/></PrivateRoute>
       },
       {
         path: "/dashboard/update/:id",
@@ -93,35 +97,35 @@ const router = createBrowserRouter([
 
       {
         path: "addproducts",
-        element: <PrivateRoute><Addproducts></Addproducts></PrivateRoute>
+        element: <PrivateRoute><Addproducts/></PrivateRoute>
       },
       {
         path: "/dashboard/reported",
-        element: <Moderator><Reported></Reported></Moderator>
+        element: <Moderator><Reported/></Moderator>
       },
          {
         path: "/dashboard/review",
-        element: <Moderator><Review></Review></Moderator>
+        element: <Moderator><Review/></Moderator>
       },
          {
         path: "/dashboard/statistics",
-        element: <PrivateRoute><Admin><Statistics></Statistics></Admin></PrivateRoute>
+        element: <PrivateRoute><Admin><Statistics/></Admin></PrivateRoute>
       },
          {
         path: "/dashboard/manageUser",
-        element: <Admin><ManageUser></ManageUser></Admin>
+        element: <Admin><ManageUser/></Admin>
       },
          {
         path: "/dashboard/coupons",
-        element: <Admin><Coupons></Coupons></Admin>
+        element: <Admin><Coupons/></Admin>
       },
          {
         path: "/dashboard/addCoupons",
-        element: <Admin><AddCoupons></AddCoupons></Admin>
+        element: <Admin><AddCoupons/></Admin>
       },
          {
         path: "/dashboard/updateCoupons/:id",
-        element: <><UpdateCoupons></UpdateCoupons></>
+        element: <><UpdateCoupons/></>
       },
 
     ]
