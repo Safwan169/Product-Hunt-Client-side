@@ -13,7 +13,6 @@ import ListItem from "@mui/material/ListItem/ListItem";
 import ListItemButton from "@mui/material/ListItemButton/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText/ListItemText";
-import MailIcon from "@mui/material/Icon";
 import { MdMenuOpen } from "react-icons/md";
 import { MdOutlineClose } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
@@ -25,13 +24,17 @@ import { FcStatistics } from "react-icons/fc";
 import { MdManageAccounts } from "react-icons/md";
 import { RiCoupon2Line } from "react-icons/ri";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import alUser from "../../../Fatching-data/alUser";
 import Contex from "../../../Authentication/Contex";
 import SpecificUser from "../../../Fatching-data/SpecificUser";
 import AddorNot from "../../../Fatching-data/AddorNot";
+import { LuLogOut } from "react-icons/lu";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../../../firebase.config";
+import Swal from "sweetalert2";
 
-const user = [
+const userDashboard = [
   {
     text: "MY Profile",
     icon: <CgProfile />,
@@ -172,20 +175,54 @@ export default function MiniDrawer() {
 
   const { user } = Contex();
   const [user2] = alUser();
-  // console.log(user2)
   const data = user2.find((d) => d.email == user.email);
-  // console.log(user2 ,data,UserData,)
-  // console.log(data)
-  // const Verified = user2?.find(d => d?.email == user?.email)
-  // const yesverified = Verified?.Verified == 'subscribe'
-  // console.log(yesverified)
-
-  // const [cart] = Alldata()
-  // const yes = cart?.find(d => d?.email == user?.email)
-  // console.log(yes)
+ 
   const [specificUser] = SpecificUser();
   const [YesOrNOt] = AddorNot();
   console.log(YesOrNOt);
+
+  const navigate=useNavigate()
+
+  const handleLogOut = () => {
+  
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success text-white m-3",
+        cancelButton: "btn btn-danger text-white bg-red-500"
+      },
+      buttonsStyling: false,
+    });
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sign Out",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire({
+            title: "Sign Out",
+            text: "You have successfully Sign Out",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 2000
+          });
+
+          navigate('/'),
+          signOut(auth);
+
+
+
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {}
+      });
+  };
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -221,7 +258,7 @@ export default function MiniDrawer() {
 
         <List>
           {(
-            (data?.status == "User" && user) ||
+            (data?.status == "User" && userDashboard) ||
             (data?.status == "Moderator" && Moderator) ||
             (data?.status == "Admin" && Admin) ||
             []
@@ -279,8 +316,12 @@ export default function MiniDrawer() {
         </List>
         <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
+            <ListItem
+              onClick={handleLogOut}
+              className="text-red-600"
+              disablePadding
+              sx={{ display: "block" }}
+            >
               <ListItemButton
                 sx={[
                   {
@@ -311,10 +352,10 @@ export default function MiniDrawer() {
                         },
                   ]}
                 >
-                  {index % 2 === 0 ? <CgProfile /> : <MailIcon />}
+                  <LuLogOut className="text-red-600" />
                 </ListItemIcon>
                 <ListItemText
-                  primary={text}
+                  primary={"Sign Out"}
                   sx={[
                     open
                       ? {
@@ -325,9 +366,8 @@ export default function MiniDrawer() {
                         },
                   ]}
                 />
-              </ListItemButton>
+              </ListItemButton>    
             </ListItem>
-          ))}
         </List>
       </Drawer>
     </Box>

@@ -19,9 +19,8 @@ const Navbar = () => {
         signOut(auth)
             .then(() => {
                 Swal.fire({
-                    title: "Good job!",
                     text: "You have successfully Sign Out",
-                    icon: "success",
+                    icon: "alert",
                     showConfirmButton: false,
                     timer: 2000
                 });

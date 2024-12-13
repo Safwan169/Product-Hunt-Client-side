@@ -22,11 +22,11 @@ const Footer = () => {
 
                     <div className="text-center  w-full mx-auto lg:w-fit md:text-left">
 
-                        <Link href="/">
+                        <Link className='w-full h-36 ' href="/">
 
                           
 
-                            <img className='h-36 sm:h-40' src="https://i.ibb.co.com/Z1qkm9Y/logo-removebg-preview.png" alt="Product Hunt" />
+                            <img className='h-28 w-48 sm:w-full mx-auto sm:h-36' src="https://i.ibb.co.com/Z1qkm9Y/logo-removebg-preview.png" alt="Product Hunt" />
                         </Link>
 
 

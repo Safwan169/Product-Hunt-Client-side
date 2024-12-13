@@ -43,7 +43,7 @@ const Login = () => {
 
 
     return (
-        <div className='h-screen mt-5'>
+        <div className='h-screen mt-5 md:mt-32 lg:mt-40 '>
             <Authtitle name={'Sign IN'} text={"Don't Have an account?"} go={'Register'} where={'/register'}></Authtitle>
 
             <div className="lg:flex md:flex  px-2 lg:px-0  justify-center  mx-auto">

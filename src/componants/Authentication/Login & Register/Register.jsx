@@ -67,9 +67,9 @@ console.log(name)
     }
 
     return (
-        <>
+        <div className='h-screen mt-5 md:mt-32 lg:mt-40 '>
             <Authtitle name={'Register'} text={'Already Have an account? '} go={'Sign In'} where={'/login'}></Authtitle>
-            <div className="lg:flex md:flex justify-center px-2 lg:px-0   mx-auto">
+            <div className="lg:flex md:flex justify-center px-2 lg:px-0 h-   mx-auto">
                 <img className='mb-4 lg:mb-0 md:mb-0' src="https://i.ibb.co/HdGkVSv/register-pic.jpg" alt="" />
 
 
@@ -120,7 +120,7 @@ console.log(name)
 
 
 
-        </>
+        </div>
     );
 };
 
