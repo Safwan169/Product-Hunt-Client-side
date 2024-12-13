@@ -41,10 +41,11 @@ const AddCoupons = () => {
         
     }
     return (
-        <div>
-            <Heading text={'Add Coupons'}></Heading>
+        <div className='mt-28 ml-16 sm:ml-0'>
+            {/* <Heading text={'Add Coupons'}></Heading> */}
             
-        <div className='w-1/2 mx-auto '>
+        <div className='w-full sm:w-1/2 mx-auto '>
+            <p className=' w-fit text-xl sm:text-2xl font-medium  border-b-2 border-gray-400 py-2  flex '>Add Coupons</p>
             <form onSubmit={handleSubmit} action="">
 
             <div className='mt-5 mb-2'>

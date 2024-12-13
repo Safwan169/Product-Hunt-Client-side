@@ -240,10 +240,10 @@ export default function MiniDrawer() {
               open && { display: "none" },
             ]}
           >
-            <MdMenuOpen />
+            <MdMenuOpen className="text-white" />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
+      
           </Typography>
         </Toolbar>
       </AppBar>
