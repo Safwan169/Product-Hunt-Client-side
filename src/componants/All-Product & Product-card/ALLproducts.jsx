@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import Heading from '../All-Shared/Heading';
 import Products from './Products';
 import Alldata from '../Fatching-data/Alldata';
+import Featured from '../Fatching-data/Featured';
+import Feretured from '../Home/shared/Feretured';
 
 const ALLproducts = () => {
     const [cart, refetch] = Alldata()
@@ -84,9 +86,9 @@ setAll(status?.slice(0,6))},[cart]
                 </div>
             </form>
 
-            <div className='grid lg:grid-cols-3 md:grid-cols-3   mx-auto  md:px-10 lg:px-10 gap-5'>
+            <div className='   mx-auto  md:px-10 lg:px-10 space-y-10'>
                 {
-                    All?.map(d => <Products dataa={d}></Products>)
+                    All?.map(d => < Feretured data={d}></    Feretured>)
                 }
 
             </div>
