@@ -74,7 +74,7 @@ const AddCoupons = () => {
                 <textarea name='description' className="textarea textarea-bordered h-24" required placeholder="Write something about it .."></textarea>
 
             </label>
-                <button className='mt-10 btn w-full font-bold text-xl btn-primary'> submit</button>
+                <button className='mt-10 btn w-full font-bold text-xl bg-blue-500 text-white rounded-none'> Submit</button>
             </form>
            </div>
         </div>
