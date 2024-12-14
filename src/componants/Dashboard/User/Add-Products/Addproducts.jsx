@@ -15,11 +15,11 @@ const Addproducts = () => {
 
   return (
 
-    <>
+    <div className="mt-28 pl-12 sm:pl-0 sm:mt-40 ">
       <Heading text={'Add Products'}></Heading>
       <From></From>
 
-    </>
+    </div>
   );
 };
 
