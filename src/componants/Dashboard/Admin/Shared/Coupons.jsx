@@ -50,7 +50,7 @@ const Coupons = () => {
   }
 
   return (
-    <div className="w-full px-4 lg:mt-20 md:mt-10 sm:px-6 lg:px-10 py-10">
+    <div className="w-full pl-12 md:pl-12 lg:pl-0 px-4 mt-8 lg:mt-20 md:mt-10 sm:px-6 lg:px-10 py-10">
       <>
         <Heading text={"Manage Coupons"} />
 
@@ -59,7 +59,7 @@ const Coupons = () => {
             <table className="table-auto w-full border-collapse border border-gray-300 text-sm">
               <thead className="bg-gray-100">
                 <tr>
-                  <th className="px-4 py-2 border">#</th>
+                  <th className="px-4 py-2 text-center lg:block hidden border">SL</th>
                   <th className="px-4 py-2 border">Coupon Code</th>
                   <th className="px-4 py-2 border">Expiry Date</th>
                   <th className="px-4 py-2 border">Discount Amount</th>
@@ -82,7 +82,7 @@ const Coupons = () => {
                     key={data._id}
                     className="hover:bg-gray-50 odd:bg-white even:bg-gray-50"
                   >
-                    <td className="border px-4 py-2">{index + 1}</td>
+                    <td className="border px-4 text-center lg:block hidden py-2">{index + 1}</td>
                     <td className="border px-4 py-2">{data.code}</td>
                     <td className="border px-4 py-2">{data.date}</td>
                     <td className="border px-4 py-2">{data.amount}</td>

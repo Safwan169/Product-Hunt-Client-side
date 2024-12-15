@@ -120,7 +120,7 @@ const Review = () => {
 
 
 
-    <>
+    <div className='mt-20 pl-8 sm:pl-0'>
       <Heading text={' Products Review'}></Heading>
 
       <div className='w-svw   mx-auto'>
@@ -128,13 +128,13 @@ const Review = () => {
           <table className="table table-xs">
             <thead>
               <tr>
-                <th className=''></th>
-                <th className=' '>Product Name</th>
-                <th className=' '>Details</th>
-                <th className=' '>Make Featured</th>
-                <th className=''>Status</th>
-                <th className='w-4'></th>
-                <th></th>
+                <th className='text-[16px] '></th>
+                <th className='text-[16px]  '>Product Name</th>
+                <th className='text-[16px]  '>Details</th>
+                <th className='text-[16px]  '>Make Featured</th>
+                <th className='text-[16px] '>Status</th>
+                <th className='text-[16px] w-4'>Accepted </th>
+                <th className='text-[16px]'>Rejected</th>
 
               </tr>
             </thead>
@@ -143,9 +143,9 @@ const Review = () => {
                 <th>{index + 1}</th>
                 <td>{data.productName}</td>
                 <td className=' '><Link className='btn' to={`/details/${data._id}`}><TbListDetails size={25} className='   text-green-400' /></Link></td>
-                <td onClick={() => handleFetured(data)} className=''><span className='btn'><MdOutlineFeaturedPlayList className='text-blue-400' size={25} /></span></td>
+                <td onClick={() => handleFetured(data)} className=''><span className='btn '><MdOutlineFeaturedPlayList className='text-blue-400' size={25} /></span></td>
                 <td className=' text-gray-400 font-semibold'>{data.status}</td>
-                {data.status == "Accepted" || data.status == "Rejected" ? <td ><button className=''><span className=''><MdOutlineFileDownloadDone size={25} className='text-gray-400 disabled' /></span></button></td> : <td onClick={() => handleAcepted(data._id)} className={`btn`}><button className=''><span className=''><MdOutlineFileDownloadDone size={25} className='text-green-400 ' /></span></button></td>}
+                {data.status == "Accepted" || data.status == "Rejected" ? <td className=' text-center' ><button className=''><span className=''><MdOutlineFileDownloadDone size={25} className='text-gray-400 disabled mx-auto' /></span></button></td> : <td onClick={() => handleAcepted(data._id)} className={`btn`}><button className=''><span className=''><MdOutlineFileDownloadDone size={25} className='text-green-400 ' /></span></button></td>}
                 {data.status == "Accepted" || data.status == "Rejected" ? <td><button className='btn'><TiDelete size={25} className='text-gray-400 disabled' /></button></td> : <td onClick={() => handleDelete(data._id)}><button className='btn'><TiDelete size={25} className='text-red-500' /></button></td>}
 
 
@@ -161,7 +161,7 @@ const Review = () => {
           </table>
         </div>
       </div>
-    </>
+    </div>
 
 
 

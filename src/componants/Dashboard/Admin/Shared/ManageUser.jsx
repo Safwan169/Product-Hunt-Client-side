@@ -23,7 +23,7 @@ const ManageUser = () => {
     };
 
     return (
-        <div className="w-full px-4 sm:px-6 lg:mt-20 md:mt-10 lg:px-20 py-10 overflow-hidden">
+        <div className="w-full md:pl-16 px-4 sm:px-6 lg:mt-20 md:mt-10 lg:px-20 py-10 overflow-hidden">
             <Heading text={'All Users'} />
 
             <div className="overflow-x-auto">
@@ -31,17 +31,17 @@ const ManageUser = () => {
                     <table className="table-auto w-full border-collapse border border-gray-200">
                         <thead>
                             <tr className="bg-gray-100">
-                                <th className="border border-gray-300 px-4 py-2 text-left">#</th>
+                                <th className="border border-gray-300 px-4  text-center py-2 ">SL</th>
                                 <th className="border border-gray-300 px-4 py-2 text-left">User Name</th>
                                 <th className="border border-gray-300 px-4 py-2 text-left">User Email</th>
                                 <th className="border border-gray-300 px-4 py-2 text-left">Role</th>
-                                <th className="border border-gray-300 px-4 py-2 text-left">Admin/Moderator</th>
+                                <th className="border border-gray-300 lg:text-center px-4 py-2 text-left">Admin/Moderator</th>
                             </tr>
                         </thead>
                         <tbody>
                             {user3?.map((data, index) => (
                                 <tr key={data._id} className="odd:bg-white even:bg-gray-50">
-                                    <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
+                                    <td className="border border-gray-300  px-4 text-center    py-2">{index + 1}</td>
                                     <td className="border border-gray-300 px-4 py-2 font-bold">
                                         {data?.name}
                                     </td>

@@ -48,7 +48,7 @@ const Reported = () => {
 
     }
     return (
-        <div>
+        <div className='mt-20 pl-7 sm:pl-0'>
 
             <Heading text={'Reported Contents'}></Heading>
 
@@ -58,18 +58,18 @@ const Reported = () => {
                         <thead>
                             <tr>
                                 <th className=''></th>
-                                <th className='font-bold text-xl '>Product Name</th>
-                                <th className='font-bold text-xl '>Details</th>
-                                <th></th>
+                                <th className='font-bold text-[16px] '>Product Name</th>
+                                <th className='font-bold text-[16px] '>Details</th>
+                                <th className='font-bold text-[16px]'>Delete</th>
 
                             </tr>
                         </thead>
                         {
                             reportData?.map((data, index) => <tbody> <tr className=''>
-                                <th className='text-xl'>{index + 1}</th>
-                                <td className='font-bold text-xl'>{data.name}</td>
-                                <td className=' '><Link className='btn' to={`/details/${data.id}`}><TbListDetails size={35} className='   text-green-400' /></Link></td>
-                                <td onClick={() => handleDelete(data.id)}><button className='btn'><TiDelete size={35} className='text-red-500' /></button></td>
+                                <th className='text-[12px]'>{index + 1}</th>
+                                <td className='font-bold text-[12px]'>{data.name}</td>
+                                <td className=' '><Link className='btn' to={`/details/${data.id}`}><TbListDetails size={25} className='   text-green-400' /></Link></td>
+                                <td onClick={() => handleDelete(data.id)}><button className='btn'><TiDelete size={25} className='text-red-500' /></button></td>
                             </tr>
                             </tbody>
 
