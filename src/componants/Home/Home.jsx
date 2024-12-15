@@ -33,7 +33,7 @@ const Home = () => {
         <Feretured data={d}></Feretured>
       ))}
 
-      <div className="my-10 container  mx-auto">
+      <div className="my-10 container lg:px-28 mx-auto">
         <ShowCoupons></ShowCoupons>
       </div>
       <div className="lg:mt-20 px-2 sm:px-0 sm:space-y-2 md:lg:mt-20 mt-10">

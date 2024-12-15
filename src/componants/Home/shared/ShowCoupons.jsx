@@ -37,18 +37,18 @@ const ShowCoupons = () => {
               <div className="flex justify-center items-center bg-gray-100 py-10 px-4">
                 <div className="flex flex-col lg:flex-row max-w-4xl w-full bg-white border rounded-md shadow-lg overflow-hidden">
                   {/* Left Side */}
-                  <div className={`${(index+1) % 2==0?'bg-yellow-500':'bg-blue-500'}  flex flex-col  justify-center items-center w-full lg:w-1/3 text-white px-6 py-10`}>
+                  <div className={`${(index+1) % 2==0?'bg-yellow-500':'bg-blue-500'}  flex flex-col  justify-center items-center w-full lg:w-1/3 text-white px-6 md:py-1 lg:py-10`}>
                     <p className="text-base font-bold uppercase tracking-wide">
                       Special Offer
                     </p>
-                    <p className="text-6xl font-extrabold">{data?.amount}$</p>
+                    <p className="text-4xl sm:text-6xl font-extrabold">{data?.amount}$</p>
                   </div>
 
                   {/* Right Side */}
                   <div className="flex-1 p-6 lg:p-8">
                     <div className={`${(index+1) % 2==0?'text-yellow-500':'text-blue-500'} flex flex-col h-full justify-between`}>
                       {/* Title */}
-                      <h2 className="text-2xl lg:text-3xl font-bold  mb-4">
+                      <h2 className="text-2xl lg:text-3xl font-bold md:mb-1 mb-4">
                         Discount Coupon
                       </h2>
 
@@ -59,17 +59,17 @@ const ShowCoupons = () => {
                       </p>
 
                       {/* Coupon Code */}
-                      <div className={`border-2 border-dashed ${(index+1) % 2==0?'border-yellow-500':'border-blue-500'} p-4 rounded-md mt-6 text-center`}>
+                      <div className={`border-2 border-dashed ${(index+1) % 2==0?'border-yellow-500':'border-blue-500'} md:p-1 lg:p-4 rounded-md mt-6 text-center`}>
                         <p className="text-sm text-gray-600 font-medium">
                           USE CODE:
                         </p>
-                        <p className="text-2xl lg:text-3xl font-bold tracking-wide mt-2">
+                        <p className="text-2xl lg:text-3xl font-bold tracking-wide md:mt-1 lg:mt-2">
                           {data?.code}
                         </p>
                       </div>
 
                       {/* Description Section */}
-                      <p className="text-gray-500 text-sm lg:text-base mt-8">
+                      <p className="text-gray-500 text-sm lg:text-base mt-3 lg:mt-8">
                         {data?.description ||
                           "Use this coupon to get an amazing discount on your next purchase. Don't miss out on this special offer!"}
                       </p>
