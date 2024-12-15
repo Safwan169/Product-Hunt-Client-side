@@ -30,8 +30,8 @@ const Feretured = ({ data }) => {
 
 
     return (
-        <div>
-            <div className="card py-0 sm:mx-5 my-1  sm:space-x-3 px-1 sm:px-3
+        <div className='lg:px-20 container mx-auto'>
+            <div className="card py-0 sm:mx-5 my-1   sm:space-x-3 px-1 sm:px-3
              card-side bg-base-100 shadow-xl">
                 <figure className=' w-20 sm:w-40 '><img className=' sm:w-20 sm:h-20 object-cover ' src={productImage} alt="product image" /></figure>
                 <div className="card-body relative p-4 ">

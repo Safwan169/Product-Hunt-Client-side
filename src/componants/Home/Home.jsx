@@ -22,32 +22,30 @@ const Home = () => {
   console.log(vote);
 
   return (
-    <div className="space-y-16">
+    <div className="px-2 sm:px-0 sm:space-y-2">
       <div className="md:h-[400px] lg:h-[700px]  ">
         <Banner></Banner>
       </div>
-   <AnimatedShinyText>
-   <Heading text={"Featured Products"}></Heading>
-   </AnimatedShinyText>
+      <AnimatedShinyText>
+        <Heading text={"Featured Products"}></Heading>
+      </AnimatedShinyText>
       {lastData?.map((d) => (
         <Feretured data={d}></Feretured>
       ))}
 
-
-      <div className="my-10">
+      <div className="my-10 container  mx-auto">
         <ShowCoupons></ShowCoupons>
       </div>
-      <div className="lg:mt-20 md:lg:mt-20 mt-10">
+      <div className="lg:mt-20 px-2 sm:px-0 sm:space-y-2 md:lg:mt-20 mt-10">
         <AnimatedShinyText>
-
-        <Heading text={"Trending Products"}></Heading>
+          <Heading text={"Trending Products"}></Heading>
         </AnimatedShinyText>
 
         {vote?.map((d) => (
           <Feretured data={d}></Feretured>
         ))}
       </div>
-      <button className="w-full   font-bold">
+      <button className="w-full mt-5  font-bold">
         <ShinyButton>
           {" "}
           <Link

@@ -44,8 +44,8 @@ console.log(user,'This is the user')
     return (
      
         <div className=" shadow-md  sticky top-0 left-0  z-50 bg-base-100">
-      <div className=" container mx-auto p-4 navbar lg:px-20  justify-between  lg:justify-between md:justify-between ">
-        <div className="navbar-start  w-fit">
+      <div className=" container  mx-auto p-4 navbar  lg:px-20  justify-between  lg:justify-between md:justify-between ">
+        <div className="navbar-start  w-fit ">
           {/* for small */}
           <div className={icon ? "" : " relative"}>
             <div
