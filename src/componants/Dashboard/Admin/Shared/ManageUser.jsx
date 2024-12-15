@@ -6,80 +6,83 @@ import axios from 'axios';
 import { myContext } from '../../../Authentication/Authentication';
 
 const ManageUser = () => {
-    const [user2,refetchUser,]=alUser()
-    const {dep,setDep,user}=useContext(myContext)
-    // console.log(user[0])
-    const user3=user2.filter(d=>d.email!==user.email)
-    
+    const [user2, refetchUser] = alUser();
+    const { dep, setDep, user } = useContext(myContext);
 
+    const user3 = user2.filter((d) => d.email !== user.email);
 
-    const handleStatus=(id,text)=>{
+    const handleStatus = (id, text) => {
+        const data = text;
+        const dd = { data };
+        axios
+            .put(`https://b9a12-server-side-safwan169.vercel.app/roleChanged/${id}`, dd)
+            .then(() => {
+                refetchUser();
+                setDep(!dep);
+            });
+    };
 
-        const data=text
-    const dd = { data }
-    console.log(dd)
-
-        axios.put(`https://b9a12-server-side-safwan169.vercel.app/roleChanged/${id}`,dd)
-        .then(res=>{
-            refetchUser()
-            setDep(!dep)
-        })
-    }
     return (
-        <div>
-            
-      <Heading text={' All Users'}></Heading>
+        <div className="w-full px-4 sm:px-6 lg:mt-20 md:mt-10 lg:px-20 py-10 overflow-hidden">
+            <Heading text={'All Users'} />
 
-<div className='w-svw   mx-auto'>
-  <div className="z-10 lg:mx-32 md:mt-20 mx-auto  lg:mt-10 md:mx-32">
-    <table className="table table-xs">
-      <thead>
-        <tr>
-          <th className=''></th>
-          <th className=' '>User Name</th>
-          <th className=' '>User Email</th>
-          <th className=' '>Role</th>
-          <th className=' '>Admin/Moderator</th>
-          
-          <th></th>
-
-        </tr>
-      </thead>
-      {
-        user3?.map((data, index) => <tbody> <tr className=''>
-          <th>{index + 1}</th>
-          <td className='font-bold ' >{data?.name}</td>
-          <td className='font-bold text-red-500'>{data.email}</td>
-          <td className='font-bold text-blue-500'>{data.status}</td>
-          <td className=' flex gap-5'>
-            {data.status=="Admin"?<span > <  MdAdminPanelSettings className={`text-gray-400 `} size={35} /></span>
-            :<span onClick={()=>handleStatus((data._id),"Admin")} > <  MdAdminPanelSettings className={`text-blue-500 `} size={35} /></span>}
-            {(data.status=="Moderator" || data.status=="Admin") ? <span className='' > < MdAddModerator     className={`text-gray-400 disabled`} size={35} />
-            </span>
-             : <span className='' onClick={()=>handleStatus((data._id),"Moderator")}> < MdAddModerator     className={`text-blue-500 disabled`} size={35} />
-            </span>}
-            </td>
-          {/* <td className='font-bold'>{data.role}</td> */}
-          
-          {/* <td className=' '><Link className='btn' to={`/details/${data._id}`}><TbListDetails size={25} className='   text-green-400' /></Link></td>
-          <td onClick={() => handleFetured(data)} className=''><span className='btn'><MdOutlineFeaturedPlayList className='text-blue-400' size={25} /></span></td>
-          <td className=' text-gray-400 font-semibold'>{data.status}</td>
-          {data.status == "Accepted" || data.status == "Rejected" ? <td ><button className=''><span className=''><MdOutlineFileDownloadDone size={25} className='text-gray-400 disabled' /></span></button></td> : <td onClick={() => handleAcepted(data._id)} className={`btn`}><button className=''><span className=''><MdOutlineFileDownloadDone size={25} className='text-green-400 ' /></span></button></td>}
-          {data.status == "Accepted" || data.status == "Rejected" ? <td><button className='btn'><TiDelete size={25} className='text-gray-400 disabled' /></button></td> : <td onClick={() => handleDelete(data._id)}><button className='btn'><TiDelete size={25} className='text-red-500' /></button></td>} */}
-
-
-        </tr>
-        </tbody>
-
-        )
-      }
-
-
-
-
-    </table>
-  </div>
-</div>
+            <div className="overflow-x-auto">
+                <div className="w-full max-w-full mx-auto">
+                    <table className="table-auto w-full border-collapse border border-gray-200">
+                        <thead>
+                            <tr className="bg-gray-100">
+                                <th className="border border-gray-300 px-4 py-2 text-left">#</th>
+                                <th className="border border-gray-300 px-4 py-2 text-left">User Name</th>
+                                <th className="border border-gray-300 px-4 py-2 text-left">User Email</th>
+                                <th className="border border-gray-300 px-4 py-2 text-left">Role</th>
+                                <th className="border border-gray-300 px-4 py-2 text-left">Admin/Moderator</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {user3?.map((data, index) => (
+                                <tr key={data._id} className="odd:bg-white even:bg-gray-50">
+                                    <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
+                                    <td className="border border-gray-300 px-4 py-2 font-bold">
+                                        {data?.name}
+                                    </td>
+                                    <td className="border border-gray-300 px-4 py-2 font-bold text-red-500">
+                                        {data.email}
+                                    </td>
+                                    <td className="border border-gray-300 px-4 py-2 font-bold text-blue-500">
+                                        {data.status}
+                                    </td>
+                                    <td className="border border-gray-300 px-4 py-2 justify-center  flex flex-wrap gap-4">
+                                        {data.status === 'Admin' ? (
+                                            <MdAdminPanelSettings
+                                                className="text-gray-400"
+                                                size={35}
+                                            />
+                                        ) : (
+                                            <MdAdminPanelSettings
+                                                onClick={() => handleStatus(data._id, 'Admin')}
+                                                className="text-blue-500 cursor-pointer"
+                                                size={35}
+                                            />
+                                        )}
+                                        {(data.status === 'Moderator' || data.status === 'Admin') ? (
+                                            <MdAddModerator
+                                                className="text-gray-400"
+                                                size={35}
+                                            />
+                                        ) : (
+                                            <MdAddModerator
+                                                onClick={() => handleStatus(data._id, 'Moderator')}
+                                                className="text-blue-500 cursor-pointer"
+                                                size={35}
+                                            />
+                                        )}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     );
 };

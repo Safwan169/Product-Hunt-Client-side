@@ -226,6 +226,8 @@ export default function MiniDrawer() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
+
+      
       <AppBar position="fixed" open={open}>
         <Toolbar>
           <IconButton
@@ -240,10 +242,15 @@ export default function MiniDrawer() {
               open && { display: "none" },
             ]}
           >
+
+
             <MdMenuOpen className="text-white" />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-      
+            <Link to={'/'}>
+         <img className="w-20 bg-cover h-12" src="https://i.ibb.co.com/Z1qkm9Y/logo-removebg-preview.png" alt="" />
+            
+            </Link>
           </Typography>
         </Toolbar>
       </AppBar>
