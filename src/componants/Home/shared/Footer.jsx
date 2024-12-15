@@ -13,7 +13,7 @@ const Footer = () => {
                 backgroundPosition: 'center',
 
             }}
-            className="text-gray-300 mt-5 pt-8 pb-4 bg-no-repeat"
+            className="text-gray-300  w-full  mt-5 pt-8 pb-4 bg-no-repeat"
         >
             <div className=" container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
